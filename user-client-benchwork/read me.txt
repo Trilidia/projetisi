@@ -9,7 +9,7 @@ avec :
 
 
 
-creer un fichier .eslintrc
+creer un fichier .eslintrc.js
 
 avec : 
 
