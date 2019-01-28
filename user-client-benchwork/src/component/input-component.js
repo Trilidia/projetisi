@@ -4,7 +4,7 @@ const InputComponent = ({ text, type, id, value }) => (
   <div>
     <label htmlFor={id} >{text}</label>
 
-    <input ype={type} id={id} defaultValue={value} />
+    <input type={type} id={id} defaultValue={value} />
   </div>
 
 );
