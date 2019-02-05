@@ -1,8 +1,8 @@
 import React from "react";
 
-const SubmitComponent = ({ type, onClick, value }) => (
+const SubmitComponent = ({ type, onClick, value, className }) => (
   <div>
-    <input type={type} onClick={onClick} value={value} />
+    <input type={type} onClick={onClick} value={value} className={className}/>
   </div>
 
 );
