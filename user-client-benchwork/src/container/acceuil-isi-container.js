@@ -283,7 +283,7 @@ class AcceuilIsiContainer extends Component {
         /*********************/
         if (studentSelect.academicstatus === 1) {
             doc.text(30.4, 201.1, "x");
-        } else if (studentSelect.academicstatus === 0) {
+        } else if (studentSelect.academicstatus === 2) {
             doc.text(46.5, 201.1, "x");
         }
         doc.setFontSize(8);
