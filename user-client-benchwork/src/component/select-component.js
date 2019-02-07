@@ -8,13 +8,18 @@ function buildOption(option, index) {
 }
 
 
-const SelectComponent = ({ text, id, type, options }) => (
+const SelectComponent = ({ text, id, type, name, options, className, onChange }) => (
   <div>
     <label htmlFor={id}>{text}</label>
     <select
+      name={name}
+      className={className}
       type={type}
       id={id}
+      onChange={onChange}
+
     >
+      <option value=''>Select option</option>
       {options.map((option, index) => buildOption(option, index))}
     </select>
   </div>

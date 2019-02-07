@@ -24,7 +24,16 @@ module.exports = {
       {
         test: /\.html$/,
         use: [{ loader: "html-loader", options: { minimize: false } }]
-      }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
     ]
   },
   plugins: [
