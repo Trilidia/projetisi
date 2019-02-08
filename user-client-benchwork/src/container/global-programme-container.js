@@ -47,12 +47,20 @@ class GlobalProgrammeContainer extends Component {
 
         return (
             <div>
+                <div className="row justify-content-center">
+                    <h1>Programms</h1>
+                </div>
+                <div>
+                    <button onClick={this.changeisclickedit} className="btn btn-secondary">
+                        {this.state.showFormIsClick ? 'show the list of programme' : 'add programme'}
+                    </button>
+                    <div className='mx-auto'>
+                        {this.state.showFormIsClick ? <FormProgrammeContainer idprogram={this.state.idprogramme} /> : <TableProgrammeContainer changeisclickedit={this.changeisclickedit} />}
+                    </div>
+                </div>
 
-                {this.state.showFormIsClick ? <FormProgrammeContainer idprogram={this.state.idprogramme} /> : <TableProgrammeContainer changeisclickedit={this.changeisclickedit} />}
-                <button onClick={this.changeisclickedit} className="btn btn-secondary">
-                    {this.state.showFormIsClick ? 'show the list of programme' : 'add programme'}
-                </button>
-            </div>
+
+            </div >
         );
     }
 }

@@ -5,20 +5,23 @@ import GlobalSessionContainer from "container/global_session-container";
 import CreateUserContainer from "container/createuser-container";
 import GlobalProgrammeContainer from "container/global-programme-container";
 import CommentContainer from "container/comment-container";
-import EtuformContainer from "container/etu-form";
 import ConsultContainer from "container/consult-container";
+import EtuformIsiContainer from "container/etu-form-isi-container";
+
 class IsiContainer extends Component {
     constructor() {
         super()
         this.state = {
             phase: 0,
             idstudentcomment: 0,
-            student:[],
+            idstudentEdit:0,
+            studentInfo:0,
             username:''
         }
         this.changePhase = this.changePhase.bind(this);
         this.setIdStudentComment = this.setIdStudentComment.bind(this);
-        this.setStudent = this.setStudent.bind(this);
+        this.setStudentInfo = this.setStudentInfo.bind(this);
+        this.setStudentEdit=this.setStudentEdit.bind(this);
     }
 
     changePhase(nbPhase) {
@@ -36,10 +39,16 @@ class IsiContainer extends Component {
         this.setState({username:this.props.username})
     }
 
-    setStudent(row){
-        this.setState({student: row})
+    setStudentInfo(studentid){
+        console.log("bb"+studentid) //eslint-disable-line
+        this.setState({studentInfo: studentid})
+        this.setState({ phase: 5 })
     }
 
+    setStudentEdit(studentid){
+        this.setState({idstudentEdit: studentid})
+        this.setState({ phase: 6 })
+    }
 
 
     render() {
@@ -52,7 +61,7 @@ class IsiContainer extends Component {
                         <h2>hello {this.state.username}</h2>
                     </div>
                     <div>
-                        <AcceuilIsiContainer changePhase={this.changePhase} setIdStudentComment={this.setIdStudentComment} setStudent={this.setStudent} />
+                        <AcceuilIsiContainer changePhase={this.changePhase} setIdStudentComment={this.setIdStudentComment} setStudentInfo={this.setStudentInfo} setStudentEdit={this.setStudentEdit}/>
                     </div>
                 </div>
             )
@@ -122,7 +131,21 @@ class IsiContainer extends Component {
                         <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} />
                     </div>
                     <div>
-                        <ConsultContainer changePhase={this.changePhase} student={this.state.student} />
+                        <ConsultContainer changePhase={this.changePhase} studentInfo={this.state.studentInfo} />
+                    </div>
+                </div>
+
+            )
+        }
+
+        else if (this.state.phase == 6) {
+            return (
+                <div>
+                    <div>
+                        <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} />
+                    </div>
+                    <div>
+                        <EtuformIsiContainer changePhase={this.changePhase} idstudentEdit={this.state.idstudentEdit} />
                     </div>
                 </div>
 

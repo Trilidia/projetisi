@@ -1,27 +1,43 @@
 import React, { Component } from 'react'
 import InfoStudentComponent from "component/info-student-component"
 import UploadContainer from "container/upload-container"
+import APIService from '../service/api-service'
 class ConsultContainer extends Component {
     constructor() {
         super()
-        this.state=({
-            infoStudent:[],
-        })
+        this.state = ({
 
+            infoStudent: 0,
+
+        })
+        this.getstudentbyid = this.getstudentbyid.bind(this);
     }
     componentDidMount() {
-        this.setState({infoStudent:this.props.student})
-        
+
+        this.getstudentbyid(this.props.studentInfo)
+    }
+
+    getstudentbyid(id) {
+
+        APIService.post('getstudentwithparamsbyid', {
+            idstudent: id
+
+        }).then(response => {
+            this.setState({ infoStudent: response.data })
+        })
+
     }
 
 
 
     render() {
-   
-   console.log("fsdgsd"+this.state.infoStudent)  //eslint-disable-line
+
+
         return (
             <div className='container'>
-                <InfoStudentComponent infoStudent={this.state.infoStudent}/>
+
+
+                {(this.state.infoStudent) == 0 ? null : <InfoStudentComponent infoStudent={this.state.infoStudent} />}
                 <UploadContainer />
             </div>
 

@@ -268,36 +268,69 @@ class FormProgrammeContainer extends Component {
     render() {
         const { displayErrors } = this.state;
         return (
-            <div>
+            <div className='container'>
 
                 <form onSubmit={this.checkedSubmitOrUpdate} className={displayErrors ? 'was-validated' : ''} id='idfrom' noValidate>
-                    {this.returnInput("Title of program :", "text", "namession", this.state.programme[0].titleprogram, "", this.onChangetitleprogram, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-                    {this.returnInput("Sigle :", "text", "year", this.state.programme[0].sigle, "", this.onchangeSigle, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-                    {this.returnInput("Total duration :", "text", "totalduration", this.state.programme[0].totalduration, "", this.onchangeTotalDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-
-                    <div className="form-group row">
-                        <RadioFormComponent legend="Program has a intership ?" id="hasintership" name="hasintership" options={this.state.yesno} checked={this.state.programme[0].hasintership} />
+                    <div className="form-group row justify-content-center">
+                        {this.returnInput("Title of program :", "text", "namession", this.state.programme[0].titleprogram, "", this.onChangetitleprogram, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
-
-                    {this.returnInput("Intership duration :", "text", "intershipduration", this.state.programme[0].intershipduration, "", this.onchangeIntershipDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-
-                    {this.returnInput("Level of study :", "text", "level", this.state.programme[0].level, "", this.onchangeLevel, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-                    {this.returnInput("Price of program :", "text", "price", this.state.programme[0].price, "", this.onchangePrice, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-                    {this.returnInput("condition of acceptance :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
-                    {this.returnInput("time start program :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
-                    {this.returnInput("time end program :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
-
-
-                    <div className="form-group row">
-                        <RadioFormComponent legend="Program is active?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.programme[0].isactive} />
+                    <div className="form-group row justify-content-center">
+                        {this.returnInput("Sigle :", "text", "year", this.state.programme[0].sigle, "", this.onchangeSigle, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
-                    <div className="form-group row">
-                        <RadioFormComponent legend="Academic status?" id="academicstatus" name="academicstatus" options={this.state.academicstatusValue} checked={this.state.programme[0].academicstatus} />
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("Total duration :", "text", "totalduration", this.state.programme[0].totalduration, "", this.onchangeTotalDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
-                    <div className="form-group row">
-                        <RadioFormComponent legend="Type of trainning?" id="typeoftraining" name="typeoftraining" options={this.state.typeoftrainingValue} checked={this.state.programme[0].typeoftraining} />
+                    <div className="form-group row justify-content-center">
+                        <div className="form-group row">
+                            <RadioFormComponent legend="Program has a intership ?" id="hasintership" name="hasintership" options={this.state.yesno} checked={this.state.programme[0].hasintership} />
+                        </div>
                     </div>
-                    <button className="btn btn-success"> {this.props.idprogram != null ? 'update' : 'submit'}</button>
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("Intership duration :", "text", "intershipduration", this.state.programme[0].intershipduration, "", this.onchangeIntershipDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("Level of study :", "text", "level", this.state.programme[0].level, "", this.onchangeLevel, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("Price of program :", "text", "price", this.state.programme[0].price, "", this.onchangePrice, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("condition of acceptance :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+                        {this.returnInput("time start program :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        {this.returnInput("time end program :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        <div className="form-group row">
+                            <RadioFormComponent legend="Program is active?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.programme[0].isactive} />
+                        </div>
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        <div className="form-group row">
+                            <RadioFormComponent legend="Academic status?" id="academicstatus" name="academicstatus" options={this.state.academicstatusValue} checked={this.state.programme[0].academicstatus} />
+                        </div>
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        <div className="form-group row">
+                            <RadioFormComponent legend="Type of trainning?" id="typeoftraining" name="typeoftraining" options={this.state.typeoftrainingValue} checked={this.state.programme[0].typeoftraining} />
+                        </div>
+                    </div>
+                    <div className="form-group row justify-content-center">
+
+                        <button className="btn btn-success"> {this.props.idprogram != null ? 'update' : 'submit'}</button>
+                    </div>
                 </form>
             </div >
         );

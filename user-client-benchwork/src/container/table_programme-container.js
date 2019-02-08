@@ -29,24 +29,25 @@ class TableProgrammeContainer extends Component {
     render() {
 
         return (
-            <div className="table-responsive">
-                <table className="table">
+            <div className="table-responsive-sm container">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
 
-                            <th>title program</th>
-                            <th>sigle</th>
-                            <th>total duration</th>
-                            <th>has intership</th>
-                            <th>intership duration</th>
-                            <th>level</th>
-                            <th>price</th>
-                            <th>is active</th>
-                            <th>condition of acceptance</th>
-                            <th>type of training</th>
-                            <th>time start program</th>
-                            <th>time end program</th>
-                            <th>academic status</th>
+                            <th scope="col">Title program</th>
+                            <th scope="col">Sigle</th>
+                            <th scope="col">Total duration</th>
+                            <th scope="col">Has intership</th>
+                            <th scope="col">Intership duration</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Is active</th>
+                            <th scope="col">Condition of acceptance</th>
+                            <th scope="col">Type of training</th>
+                            <th scope="col">Time start program</th>
+                            <th scope="col">Time end program</th>
+                            <th scope="col">Academic status</th>
+                            <th scope="col">Edit</th>
 
                         </tr>
                     </thead>
@@ -69,7 +70,7 @@ class TableProgrammeContainer extends Component {
                                     <td >{value.timestartprogram}</td>
                                     <td >{value.timeendprogram}</td>
                                     <td >{value.nameacademicstatus}</td>
-                                    <td><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-warning">edit</button></td>
+                                    <td><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-outline-warning">edit</button></td>
 
                                 </tr>
                             )

@@ -24,7 +24,7 @@ class AcceuilIsiContainer extends Component {
             verdictToEdit: 0,
             isFactured: 0,
             isBillPaid: 0,
-           // phase: 0
+            // phase: 0
 
         }
 
@@ -37,7 +37,7 @@ class AcceuilIsiContainer extends Component {
         this.saveChanges = this.saveChanges.bind(this);
         //this.changePhaseToSession = this.changePhaseToSession.bind(this)
         this.handleClick = this.handleClick.bind(this);
-        this.consultstudent = this.consultstudent.bind(this);
+
 
 
     }
@@ -97,13 +97,6 @@ class AcceuilIsiContainer extends Component {
         this.setState({
             verdictSearched: event.target.value
         })
-    }
-    consultstudent(student){
-        console.log(student) //eslint-disable-line
-        this.props.changePhase(5)
-        
-        this.props.setStudent(student);
-        
     }
 
 
@@ -347,6 +340,7 @@ class AcceuilIsiContainer extends Component {
             <div className="container-fluid">
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
+                        <img src={require('../images/isi.png')} />
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
                             <InputComponent
@@ -386,9 +380,13 @@ class AcceuilIsiContainer extends Component {
                                 onChange={this.onChangeVerdict}
                             />
 
+                            <br />
                             <button className="btn btn-secondary col-md-12 mb-12 mt-100">Display</button>
+                            <br />
+
 
                         </form>
+                        <br />
                         <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
                     </div>
                     <div className="col-md-10 mb-10">
@@ -400,10 +398,10 @@ class AcceuilIsiContainer extends Component {
                                     verdict={this.state.verdict}
                                     status={this.state.status}
                                     createpdf={this.handleClick}
-                                    clickOnEdit={this.props.clickOnEdit}
                                     writeComment={this.props.setIdStudentComment}
-                                    consultstudent={this.consultstudent}
-                                    
+                                    consultstudent={this.props.setStudentInfo}
+                                    setStudentEdit={this.props.setStudentEdit}
+
                                 />
                             </tbody>
                         </table >

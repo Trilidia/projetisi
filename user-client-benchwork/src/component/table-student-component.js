@@ -1,6 +1,6 @@
 import React from "react";
 import SubmitComponent from "component/submit-component";
-const TableStudentComponent = ({ students, clickOnEdit, createpdf }) => (
+const TableStudentComponent = ({ students,  createpdf, setidstudent }) => (
 
   <table className="table">
     <thead className="thead-dark">
@@ -22,8 +22,8 @@ const TableStudentComponent = ({ students, clickOnEdit, createpdf }) => (
             <td >{row.lastname} {row.firstname}</td>
             <td >{row.nameverdict}</td>
             <td >{row.namestatut}</td>
-            <td ><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info"/></td>
-            <td ><SubmitComponent type='submit' prop1={row.idnumber} value='Edit'className="btn btn-outline-success" onClick={() => clickOnEdit(row.idstudent)}/></td>
+            <td ><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={() => setidstudent(row.idstudent,2)}/></td>
+            <td ><SubmitComponent type='submit' prop1={row.idnumber} value='Edit'className="btn btn-outline-success" onClick={() => setidstudent(row.idstudent,1)}/></td>
             <td ><SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger" onClick={()=>createpdf(row)}/></td>
           </tr>
         )

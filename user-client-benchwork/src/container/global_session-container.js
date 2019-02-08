@@ -53,13 +53,11 @@ class GlobalSessionContainer extends Component {
                 <div className="row justify-content-center">
                     <h1>Sessions</h1>
                 </div>
-
                 <div className='mx-auto justify-content-center'>
-                <button onClick={this.changeisclickedit} className="btn btn-dark btn-lg">
+                    <button onClick={this.changeisclickedit} className="btn btn-dark btn-lg">
                         {this.state.showFormIsClick ? 'show the list of sessions' : 'add session'}
                     </button>
                     {this.state.showFormIsClick ? <FormSessionContainer idsession={this.state.idsession} /> : <TableSessionContainer changeisclickedit={this.changeisclickedit} />}
-                    
                 </div>
             </div >
         );

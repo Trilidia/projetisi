@@ -1,10 +1,10 @@
 import React from "react";
 import SubmitComponent from "component/submit-component";
 
-const TableStudentIsiComponent = ({ students, clickOnEdit, createpdf, writeComment, consultstudent}) => (
+const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultstudent,setStudentEdit}) => (
   
   <table className="table">
-    <thead className="thead-dark">
+    <thead className="thead-danger">
       <tr>
         <th>Id Number</th>
         <th>Full Name</th>
@@ -29,8 +29,8 @@ const TableStudentIsiComponent = ({ students, clickOnEdit, createpdf, writeComme
             <td >{row.namestatut}</td>
             <td className={(row.isfactured)?"text-success":"text-danger"}>{(row.isfactured)?"yes":"no"}</td>
             <td className={(row.isfactured)?"text-success":"text-danger"}>{(row.isbillpaid)?"yes":"no"}</td>
-            <td ><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={()=>consultstudent(row)}/></td>
-            <td ><SubmitComponent type='submit' prop1={row.idnumber} value='Edit'className="btn btn-outline-success" onClick={() => clickOnEdit(row.idstudent)}/></td>
+            <td ><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={()=>consultstudent(row.idstudent)}/></td>
+            <td ><SubmitComponent type='submit' value='Edit'className="btn btn-outline-success"onClick={()=> setStudentEdit(row.idstudent)}/></td>
             <td ><SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger" onClick={()=>createpdf(row)} /></td>
 
             <td >

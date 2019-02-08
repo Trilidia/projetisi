@@ -10,8 +10,9 @@ class HeaderRecrutContainer extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark mr-auto bg-dark">
-                    <a className="navbar-brand" href="#" onClick={this.props.clickOnSubmit}>Home</a>
-                    <a className="navbar-brand" href="#" onClick={()=> this.props.clickOnEdit(0)}>New Student</a>
+               
+                    <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(0)}>Home</a>
+                    <a className="navbar-brand" href="#" onClick={() => this.props.setidstudent(0,1)}>New Student</a>
                     <a className="navbar-brand" href="#" onClick={this.props.logout}>Logout</a>
 
                 </nav>

@@ -70,6 +70,8 @@ class EtuformContainer extends Component {
         this.generatedIdNumber = this.generatedIdNumber.bind(this);
         this.applyValueOfRadio = this.applyValueOfRadio.bind(this);
         this.testIdUniqueIdNumber = this.testIdUniqueIdNumber.bind(this);
+
+        this.resetComponent= this.resetComponent.bind(this)
     }
     componentDidMount() {
         APIService.get("programform").then(response => {
@@ -96,6 +98,40 @@ class EtuformContainer extends Component {
 
 
     }
+
+    componentWillReceiveProps(){
+        this.resetComponent()
+    }
+
+    resetComponent(){
+        console.log('rentre1') // eslint-disable-line
+        this.setState({student: [{
+            streetname: "",
+            streetno: "",
+            apt: "",
+            postalcode: "",
+            pobox: "",
+            province: "",
+            city: "",
+            firstname: "",
+            lastname: "",
+            birthday: "",
+            email: "",
+            telephone: "",
+            programid: "",
+            sessionid: "",
+            hasCAQorMIDI: "",
+            isfeesprepaid: "",
+            idnumber: 0,
+            verdictid: 3,
+            statutid: 4,
+            isexchangestudent: "",
+            isbillpaid: 0,
+            isfactured: 0,
+            idstudent: 0
+        }]})
+    }
+
     handleSubmit(event) {
         let idstudent = this.state.student[0].idstudent;
         this.applyValueOfRadio();

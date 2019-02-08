@@ -2,39 +2,78 @@ import React, { Component } from 'react'
 import AcceuilRecruteurContainer from "container/acceuil-recruteur-container";
 import HeaderRecrutContainer from "container/header-recruts";
 import EtuformContainer from "container/etu-form";
-
+import ConsultRecrutContainer from "container/consult-recrut-container";
 
 
 class RecruteurContainer extends Component {
     constructor() {
         super()
         this.state = {
-            isediting:false,
-            idstudentedit:0
-         }
-         this.clickOnEdit=this.clickOnEdit.bind(this);
-         this.clickOnSubmit=this.clickOnSubmit.bind(this);
+            phase: 0,
+            idstudent: 0,
+
+        }
+        this.changePhase = this.changePhase.bind(this);
+        this.setidstudent = this.setidstudent.bind(this);
+
     }
 
-    clickOnEdit(idstudent){
-        this.setState({isediting:true,idstudentedit:idstudent})
+
+    changePhase(nbPhase) {
+        this.setState({ phase: nbPhase })
     }
 
-    clickOnSubmit(){
-        this.setState({isediting:false})
+    setidstudent(idstudent, nbPhase) {
+        this.setState({ idstudent: idstudent })
+        this.setState({ phase: nbPhase })
+
     }
+
 
     render() {
-        return (
-            <div>
+        if (this.state.phase == 0) {
+            return (
                 <div>
-                    <HeaderRecrutContainer clickOnSubmit={this.clickOnSubmit} clickOnEdit={this.clickOnEdit} logout={this.props.logout} />
+                    <div>
+                        <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} setidstudent={this.setidstudent} />
+                    </div>
+                    <div>
+                        <AcceuilRecruteurContainer changePhase={this.changePhase} setidstudent={this.setidstudent} />
+
+                    </div>
                 </div>
+            )
+        }
+
+        else if (this.state.phase == 1) {
+            return (
                 <div>
-                 {(this.state.isediting)?<EtuformContainer clickOnSubmit={this.clickOnSubmit} idstudent={this.state.idstudentedit}/>:<AcceuilRecruteurContainer clickOnEdit={this.clickOnEdit}/>}
+                    <div>
+                        <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} setidstudent={this.setidstudent} />
+                    </div>
+                    <div>
+                        <EtuformContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
+
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
+
+        else if (this.state.phase == 2) {
+            return (
+                <div>
+                    <div>
+                        <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} />
+                    </div>
+                    <div>
+                       
+                        <ConsultRecrutContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
+
+                    </div>
+                </div>
+            )
+        }
+
     }
 
 }
