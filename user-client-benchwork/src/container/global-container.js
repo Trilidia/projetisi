@@ -34,7 +34,7 @@ class GlobalContainer extends Component {
 
     render() {
         if (this.state.login == 2) { return (<div><IsiContainer logout={this.logout} username={this.state.userName}/></div>) }
-        else if (this.state.login == 1) { return (<div><RecruteurContainer logout={this.logout} /></div>) }
+        else if (this.state.login == 1) { return (<div><RecruteurContainer logout={this.logout} username={this.state.userName}/></div>) }
         else { return (<div><LoginContainer login={this.login} setUserName={this.setUserName}/></div>) }
 
     }

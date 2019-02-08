@@ -31,7 +31,7 @@ const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultst
             <td className={(row.isfactured)?"text-success":"text-danger"}>{(row.isbillpaid)?"yes":"no"}</td>
             <td ><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={()=>consultstudent(row.idstudent)}/></td>
             <td ><SubmitComponent type='submit' value='Edit'className="btn btn-outline-success"onClick={()=> setStudentEdit(row.idstudent)}/></td>
-            <td ><SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger" onClick={()=>createpdf(row)} /></td>
+            <td >{row.statutid != 4 ? <SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger" onClick={()=>createpdf(row)}/> : <SubmitComponent type='submit' value='pdf' className="btn btn-outline-secondary"/>}</td>
 
             <td >
               <SubmitComponent type='submit' value='Comment' className="btn btn-secondary btn-lg"

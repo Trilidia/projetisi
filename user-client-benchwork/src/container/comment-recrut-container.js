@@ -3,7 +3,7 @@ import APIService from "service/api-service";
 import TextareaComponent from "component/textarea-component";
 import TableCommentComponent from "component/table-comment-component";
 
-class CommentContainer extends Component {
+class CommentRecrutContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,13 +15,13 @@ class CommentContainer extends Component {
         }
 
         this.onChangeTextarea = this.onChangeTextarea.bind(this);
-        this.sendComment = this.sendComment.bind(this);
+    
         this.addComment = this.addComment.bind(this);
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
     }
     getAllCommentByStudentId() {
-        let propsId = this.props.idstudentcomment;
+        let propsId = this.props.idstudent;
         this.setState({ studentid: propsId })
         APIService.post('getcommentbyidstudent', {
             idstudent: propsId
@@ -47,23 +47,16 @@ class CommentContainer extends Component {
     }
 
     addComment() {
-        if (this.state.textmsg != '') {
+       
             APIService.post('addcomment', {
                 nameuser: this.state.nameUser,
                 text: this.state.textmsg,
                 studentid: this.state.studentid
             })
-            this.getAllCommentByStudentId();
-        }
-
+       
+        this.getAllCommentByStudentId();
     }
-    sendComment(event) {
-        event.preventDefault();
-        {
-            this.addComment();
-        }
-
-    }
+   
 
     render() {
 
@@ -75,7 +68,7 @@ class CommentContainer extends Component {
                 </div>
                 <div className="container">
 
-                    <form onSubmit={this.sendComment}>
+                    <form >
                         <h2>{this.state.nameUser}</h2>
 
 
@@ -107,4 +100,4 @@ class CommentContainer extends Component {
     }
 
 }
-export default CommentContainer
+export default CommentRecrutContainer

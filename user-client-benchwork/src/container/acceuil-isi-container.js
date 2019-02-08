@@ -295,14 +295,14 @@ class AcceuilIsiContainer extends Component {
         doc.text(24, 231, studentSelect.totalduration);
         if (studentSelect.hasintership === 1) {
             doc.text(111.5, 227.2, "x");
-        } else if (studentSelect.hasintership === 2) {
+            doc.setFontSize(8);
+            doc.text(133, 227, studentSelect.intershipduration);
+            doc.setFontSize(6);
+            doc.text(138, 232, studentSelect.titleprogram);
+            doc.setFontSize(10);
+        } else if (studentSelect.hasintership === 0) {
             doc.text(111.5, 231.7, "x");
         }
-        doc.setFontSize(8);
-        doc.text(133, 227, studentSelect.intershipduration);
-        doc.setFontSize(6);
-        doc.text(138, 232, studentSelect.titleprogram);
-        doc.setFontSize(10);
         if (studentSelect.conditionofaccecptance !== null) {
             doc.text(24, 242.5, studentSelect.conditionofaccecptance);
         }

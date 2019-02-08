@@ -3,7 +3,7 @@ import AcceuilRecruteurContainer from "container/acceuil-recruteur-container";
 import HeaderRecrutContainer from "container/header-recruts";
 import EtuformContainer from "container/etu-form";
 import ConsultRecrutContainer from "container/consult-recrut-container";
-
+import CommentRecrutContainer from "container/comment-recrut-container.js";
 
 class RecruteurContainer extends Component {
     constructor() {
@@ -11,13 +11,18 @@ class RecruteurContainer extends Component {
         this.state = {
             phase: 0,
             idstudent: 0,
+            username: ''
 
         }
         this.changePhase = this.changePhase.bind(this);
         this.setidstudent = this.setidstudent.bind(this);
 
-    }
 
+    }
+    componentDidMount() {
+        this.changePhase(0)
+        this.setState({ username: this.props.username })
+    }
 
     changePhase(nbPhase) {
         this.setState({ phase: nbPhase })
@@ -53,7 +58,6 @@ class RecruteurContainer extends Component {
                     </div>
                     <div>
                         <EtuformContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
-
                     </div>
                 </div>
             )
@@ -64,10 +68,24 @@ class RecruteurContainer extends Component {
                 <div>
                     <div>
                         <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} />
+                        <h2>hello {this.state.username}</h2>
                     </div>
                     <div>
-                       
                         <ConsultRecrutContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
+                    </div>
+                </div>
+            )
+        }
+
+        else if (this.state.phase == 3) {
+            return (
+                <div>
+                    <div>
+                        <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} />
+                    </div>
+                    <div>
+
+                        <CommentRecrutContainer changePhase={this.changePhase} idstudent={this.state.idstudent} username={this.state.username} />
 
                     </div>
                 </div>
