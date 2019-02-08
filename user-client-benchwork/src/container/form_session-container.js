@@ -38,12 +38,12 @@ class FormSessionContainer extends Component {
 
     updateSession() {
         ApiService.post('updatesession', {
-            idsession: this.props.idsession,
-            namesession: this.state.namesession,
-            datestartsession: this.state.datestartsession,
-            dateendsession: this.state.dateendsession,
-            isactive: this.state.isactive,
-            yearsession: this.state.yearsession,
+            idsession: this.state.session[0].idsession,
+            namesession: this.state.session[0].namesession,
+            datestartsession: this.state.session[0].datestartsession,
+            dateendsession: this.state.session[0].dateendsession,
+            isactive: this.state.session[0].isactive,
+            yearsession: this.state.session[0].yearsession,
 
         })
     }
@@ -51,11 +51,11 @@ class FormSessionContainer extends Component {
 
     addSession() {
         ApiService.post('addsession', {
-            namesession: this.state.namesession,
-            datestartsession: this.state.datestartsession,
-            dateendsession: this.state.dateendsession,
-            isactive: this.state.isactive,
-            yearsession: this.state.yearsession,
+            namesession: this.state.session[0].namesession,
+            datestartsession: this.state.session[0].datestartsession,
+            dateendsession: this.state.session[0].dateendsession,
+            isactive: this.state.session[0].isactive,
+            yearsession: this.state.session[0].yearsession,
 
         })
 
@@ -67,7 +67,7 @@ class FormSessionContainer extends Component {
             this.setState({ displayErrors: true });
             return;
         } else {
-            if (this.session.idsession != 0) {
+            if (this.props.idsession != 0) {
                 this.updateSession()
                 this.setState({
                     ispdate: true
