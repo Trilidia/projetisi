@@ -112,6 +112,7 @@ class EtuformContainer extends Component {
             postalcode: "",
             pobox: "",
             province: "",
+            country:"",
             city: "",
             firstname: "",
             lastname: "",
@@ -253,16 +254,16 @@ class EtuformContainer extends Component {
     applyValueOfRadio() {
         let hasCAQorMIDIvalue = this.getRadioValue('hasCAQorMIDI');
         if (hasCAQorMIDIvalue === undefined) {
-            hasCAQorMIDIvalue = 0;
+            hasCAQorMIDIvalue = 2;
         }
         let isfeesprepaidValue = this.getRadioValue('isfeesprepaid');
         if (isfeesprepaidValue === undefined) {
-            isfeesprepaidValue = 0;
+            isfeesprepaidValue = 2;
         }
 
         let isexchangestudentValue = this.getRadioValue('isexchangestudent');
         if (isexchangestudentValue === undefined) {
-            isexchangestudentValue = 0;
+            isexchangestudentValue = 2;
         }
         var statename = { ...this.state.student }
 
@@ -416,6 +417,9 @@ class EtuformContainer extends Component {
         this.setState({ enableValidation: false });
         var student = { ...this.state.student }
         student[0].statutid = 4;
+        
+        student[0].programid = -1;
+        student[0].sessionid = -1;
         this.setState({ student })
     }
 
