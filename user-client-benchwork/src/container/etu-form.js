@@ -131,6 +131,7 @@ class EtuformContainer extends Component {
             isfactured: 0,
             idstudent: 0
         }]})
+        this.setState({displayErrors:false})
     }
 
     handleSubmit(event) {
