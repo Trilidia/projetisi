@@ -3,6 +3,7 @@ import APIService from "service/api-service";
 import TextareaComponent from "component/textarea-component";
 import TableCommentComponent from "component/table-comment-component";
 
+
 class CommentRecrutContainer extends Component {
     constructor(props) {
         super(props)
@@ -19,18 +20,11 @@ class CommentRecrutContainer extends Component {
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
     }
-    getAllCommentByStudentId() {
-        let propsId = this.props.idstudent;
-        this.setState({ studentid: propsId })
-        APIService.post('getcommentbyidstudent', {
-            idstudent: propsId
-        }).then(response => {
-            this.setState({ comments: response.data });
-        })
-    }
+
 
     componentDidMount() {
-        this.getAllCommentByStudentId();
+        this.getAllCommentByStudentId(this.props.idstudent);
+        this.setState({ studentid: this.props.idstudent })
         this.setState({
             nameUser: this.props.username
         })
@@ -39,6 +33,15 @@ class CommentRecrutContainer extends Component {
 
 
 
+    getAllCommentByStudentId(id) {
+
+        APIService.post('getcommentbyidstudent', {
+            idstudent: id
+        }).then(response => {
+            this.setState({ comments: response.data });
+        })
+    }
+
     onChangeTextarea(event) {
         this.setState({
             textmsg: event.target.value
@@ -46,15 +49,18 @@ class CommentRecrutContainer extends Component {
     }
 
     addComment() {
-
-        APIService.post('addcomment', {
-            nameuser: this.state.nameUser,
-            text: this.state.textmsg,
-            studentid: this.state.studentid
-        })
-
-        this.getAllCommentByStudentId();
+        if (this.state.textmsg != '') {
+            APIService.post('addcomment', {
+                nameuser: this.state.nameUser,
+                text: this.state.textmsg,
+                studentid: this.state.studentid
+            })
+            this.getAllCommentByStudentId(this.state.studentid);
+            this.setState({ textmsg: "" });
+        }
+        this.getAllCommentByStudentId(this.state.studentid);
     }
+
 
 
     render() {

@@ -15,31 +15,28 @@ class CommentContainer extends Component {
         }
 
         this.onChangeTextarea = this.onChangeTextarea.bind(this);
-        this.sendComment = this.sendComment.bind(this);
         this.addComment = this.addComment.bind(this);
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
     }
-    getAllCommentByStudentId() {
-        let propsId = this.props.idstudentcomment;
-        this.setState({ studentid: propsId })
+    
+
+    componentDidMount() {
+        this.getAllCommentByStudentId(this.props.idstudentcomment);
+        this.setState({ studentid: this.props.idstudentcomment })
+        this.setState({nameUser: this.props.username})
+      
+    }
+    
+
+    getAllCommentByStudentId(id) {
+       
         APIService.post('getcommentbyidstudent', {
-            idstudent: propsId
+            idstudent: id
         }).then(response => {
             this.setState({ comments: response.data });
         })
     }
-
-    componentDidMount() {
-        this.getAllCommentByStudentId();
-        this.setState({
-            nameUser: this.props.username
-        })
-
-    }
-
-
-
     onChangeTextarea(event) {
         this.setState({
             textmsg: event.target.value
@@ -53,17 +50,14 @@ class CommentContainer extends Component {
                 text: this.state.textmsg,
                 studentid: this.state.studentid
             })
-            this.getAllCommentByStudentId();
+            
+            this.getAllCommentByStudentId(this.state.studentid);
+            this.setState({ textmsg: "" });
         }
+        this.getAllCommentByStudentId(this.state.studentid);
 
     }
-    sendComment(event) {
-        event.preventDefault();
-        {
-            this.addComment();
-        }
-
-    }
+  
 
     render() {
 
@@ -75,7 +69,7 @@ class CommentContainer extends Component {
                 </div>
                 <div className="container">
 
-                    <form onSubmit={this.sendComment}>
+                    <form>
                         <h2>{this.state.nameUser}</h2>
 
 
