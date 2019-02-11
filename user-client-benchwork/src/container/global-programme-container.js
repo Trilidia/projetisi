@@ -41,6 +41,9 @@ class GlobalProgrammeContainer extends Component {
         this.setState(function (prevState) {
             return { showFormIsClick: !prevState.showFormIsClick };
         });
+        if(this.state.showFormIsClick){
+            this.setState({idprogramme:null})
+        }
     }
 
     render() {
@@ -54,7 +57,7 @@ class GlobalProgrammeContainer extends Component {
                     <button onClick={this.changeisclickedit} className="btn btn-secondary">
                         {this.state.showFormIsClick ? 'Show the list of programme' : 'Add programme'}
                     </button>
-                    <div className='mx-auto'>
+                    <div className='container'>
                         {this.state.showFormIsClick ? <FormProgrammeContainer idprogram={this.state.idprogramme} /> : <TableProgrammeContainer changeisclickedit={this.changeisclickedit} />}
                     </div>
                 </div>

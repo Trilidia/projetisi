@@ -39,6 +39,9 @@ class GlobalSessionContainer extends Component {
         this.setState(function (prevState) {
             return { showFormIsClick: !prevState.showFormIsClick };
         });
+        if(this.state.showFormIsClick){
+            this.setState({idsession:null})
+        }
 
 
     }
