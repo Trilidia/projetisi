@@ -48,7 +48,6 @@ class AcceuilRecruteurContainer extends Component {
         this.getSelectAll()
         this.getAllStatus()
         this.getAllVerdict()
-      
     }
 
     onChangeId(event) {
@@ -301,11 +300,11 @@ class AcceuilRecruteurContainer extends Component {
         // this.getSelectAll();
         return (
             <div className="container-fluid">
-            <br/>
-            <br/>
+                <br />
+                <br />
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
-                    <img src={require('../images/isi.png')}/>
+                        <img src={require('../images/isi.png')} />
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
                             <InputComponent
@@ -344,18 +343,18 @@ class AcceuilRecruteurContainer extends Component {
                                 options={this.state.verdict}
                                 onChange={this.onChangeVerdict}
                             />
-                           <br/>
-                                <button className="btn btn-secondary col-md-12 mb-12">Display</button>
-                        <br/>
+                            <br />
+                            <button className="btn btn-secondary col-md-12 mb-12">Display</button>
+                            <br />
                         </form>
-                        <br/>
-                            <button className="btn btn-secondary col-md-12 mb-12  mt-15" onClick={this.getSelectAll}>Display all</button>
-                     
+                        <br />
+                        <button className="btn btn-secondary col-md-12 mb-12  mt-15" onClick={this.getSelectAll}>Display all</button>
+
                     </div>
 
                     <div className="col-md-10 mb-10">
                         <TableStudentComponent
-                            students={this.state.students} clickOnEdit={this.props.clickOnEdit} createpdf={this.handleClick} setidstudent={this.props.setidstudent} 
+                            students={this.state.students} clickOnEdit={this.props.clickOnEdit} createpdf={this.handleClick} setidstudent={this.props.setidstudent}
                         />
                     </div>
                 </div>

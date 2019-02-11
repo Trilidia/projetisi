@@ -70,7 +70,7 @@ class TableProgrammeContainer extends Component {
                                     <td >{value.timestartprogram}</td>
                                     <td >{value.timeendprogram}</td>
                                     <td >{value.nameacademicstatus}</td>
-                                    <td><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-outline-warning">edit</button></td>
+                                    <td><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-outline-warning">Edit</button></td>
 
                                 </tr>
                             )

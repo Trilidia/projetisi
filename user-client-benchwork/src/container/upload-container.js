@@ -3,7 +3,7 @@ import axios from '../service/api-service'
 import FileItemComponent from '../component/filelist-component'
 
 class UploadContainer extends Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       selectedFile: '',
@@ -16,7 +16,7 @@ class UploadContainer extends Component {
     // this.deleteFile = this.deleteFile.bind(this)
   }
 
-  getFilesList () {
+  getFilesList() {
     axios
       .get('/files', {
         params: {
@@ -26,14 +26,14 @@ class UploadContainer extends Component {
       .then(response => {
         this.setState({ fileslist: response.data })
       })
-   
+
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getFilesList()
   }
 
-  onChange (e) {
+  onChange(e) {
     // update state when form inputs change
     switch (e.target.name) {
       case 'selectedFile':
@@ -55,7 +55,7 @@ class UploadContainer extends Component {
       .catch(function (error) {})
     this.getFilesList()
   } */
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     // event to submit the data to the server
     const FormData = require('form-data')
@@ -67,7 +67,7 @@ class UploadContainer extends Component {
       // check if this is a file:
       if (files.hasOwnProperty(key) && files[key] instanceof File) {
         form.append(key, files[key], 'multipart/form-data')
-        
+
       }
     }
 
@@ -79,11 +79,11 @@ class UploadContainer extends Component {
           uploadStatus: true
         })
       })
-      .catch(function (error) {})
+      .catch(function (error) { })
     this.getFilesList()
   }
 
-  render () {
+  render() {
     if (this.state.fileslist.length === 0) {
       return false
     }

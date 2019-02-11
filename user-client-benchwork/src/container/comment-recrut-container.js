@@ -11,11 +11,10 @@ class CommentRecrutContainer extends Component {
             nameUser: '',
             textmsg: "",
             studentid: 0,
-
         }
 
         this.onChangeTextarea = this.onChangeTextarea.bind(this);
-    
+
         this.addComment = this.addComment.bind(this);
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
@@ -47,16 +46,16 @@ class CommentRecrutContainer extends Component {
     }
 
     addComment() {
-       
-            APIService.post('addcomment', {
-                nameuser: this.state.nameUser,
-                text: this.state.textmsg,
-                studentid: this.state.studentid
-            })
-       
+
+        APIService.post('addcomment', {
+            nameuser: this.state.nameUser,
+            text: this.state.textmsg,
+            studentid: this.state.studentid
+        })
+
         this.getAllCommentByStudentId();
     }
-   
+
 
     render() {
 
@@ -89,7 +88,7 @@ class CommentRecrutContainer extends Component {
                         <button type="button" className="btn btn-danger btn-lg ml-auto col-sm-4" onClick={() => this.props.changePhase(0)}>Cancel</button>
 
                     </div>
-                    <br/>
+                    <br />
                     <TableCommentComponent
                         comments={this.state.comments}
                     />

@@ -52,7 +52,7 @@ class GlobalProgrammeContainer extends Component {
                 </div>
                 <div>
                     <button onClick={this.changeisclickedit} className="btn btn-secondary">
-                        {this.state.showFormIsClick ? 'show the list of programme' : 'add programme'}
+                        {this.state.showFormIsClick ? 'Show the list of programme' : 'Add programme'}
                     </button>
                     <div className='mx-auto'>
                         {this.state.showFormIsClick ? <FormProgrammeContainer idprogram={this.state.idprogramme} /> : <TableProgrammeContainer changeisclickedit={this.changeisclickedit} />}

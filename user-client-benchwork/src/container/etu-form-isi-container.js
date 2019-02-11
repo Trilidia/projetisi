@@ -106,10 +106,10 @@ class EtuformIsiContainer extends Component {
         if (idstudent == 0) {
             this.generatedIdNumber();
         }
-        
+
 
         let propsId = this.props.idstudentEdit;
-        if(propsId!=0){
+        if (propsId != 0) {
             APIService.post('getstudentbyid', {
                 idstudent: propsId
             }).then(response => {
@@ -224,8 +224,6 @@ class EtuformIsiContainer extends Component {
         this.setState({ statename })
         statename[0].isfactured = isfacturedValue;
         this.setState({ statename })
-
-
     }
 
 
@@ -393,21 +391,21 @@ class EtuformIsiContainer extends Component {
             <form onSubmit={this.handleSubmit} className={displayErrors ? 'was-validated' : ''} noValidate>
 
                 <div className="container">
-                    <h3>Administration information</h3>
+                    <h3>Administrative information</h3>
                     <div className="form-group row">
                         <SelectFormComponent text="Status :" id="statusid" options={this.state.statut} onChange={this.onChangeStatut} selected={this.state.student[0].statutid} />
                         <SelectFormComponent text="Verdict :" id="statusid" options={this.state.verdict} onChange={this.onChangeVerdict} selected={this.state.student[0].verdictid} />
                     </div>
                     <div className="form-group row">
-                        <RadioFormComponent legend="Student has been factured? :" id="isfactured" name="isfactured" options={this.state.yesno} checked={this.state.student[0].isfactured} />
-                        <RadioFormComponent legend="Student has paid the bill? :" id="isbillpaid" name="isbillpaid" options={this.state.yesno} checked={this.state.student[0].isbillpaid} />
+                        <RadioFormComponent legend="Student has been factured ? :" id="isfactured" name="isfactured" options={this.state.yesno} checked={this.state.student[0].isfactured} />
+                        <RadioFormComponent legend="Student has paid the bill ? :" id="isbillpaid" name="isbillpaid" options={this.state.yesno} checked={this.state.student[0].isbillpaid} />
                     </div>
                     <div className="form-group row">
-                        <ButtonSubmitComponent text='Save administration info' className="btn btn-success" onClick={(e) => { if (window.confirm('Are you sure you want to edit this student?')) this.setUpdateForAdministation(e) }} />
+                        <ButtonSubmitComponent text='Save administrative information' className="btn btn-success" onClick={(e) => { if (window.confirm('Are you sure you want to edit this student?')) this.setUpdateForAdministation(e) }} />
                     </div>
 
                     <hr className="danger" />
-                    <h3>Personnal information</h3>
+                    <h3>Personal information</h3>
 
                     <div className="form-group row">
                         {this.returnInput("Firstname :", "text", "firstname", this.state.student[0].firstname, "First name", this.changeFirstname, "\\D+", "col-md-3", "form-control", "Can't be empty, write n/a if the student doesn't have first name", this.state.enableValidation, "required")}
@@ -434,7 +432,7 @@ class EtuformIsiContainer extends Component {
                     </div>
 
                     <div className="form-group row">
-                        <RadioFormComponent legend="Certificat d'acceptation du Quebec (CAQ) or Ministere de l'immigration, Diversite et Inclusion (MIDI) letter :" id="hasCAQorMIDI" name="hasCAQorMIDI" options={this.state.yesno} checked={this.state.student[0].hasCAQorMIDI} />
+                        <RadioFormComponent legend="Certificate of Acceptance of Quebec(CAQ) or Ministry of Immigration, Diversity and Inclusion(MIDI) letter :" id="hasCAQorMIDI" name="hasCAQorMIDI" options={this.state.yesno} checked={this.state.student[0].hasCAQorMIDI} />
                     </div>
 
                     <div className="form-group row">
@@ -442,19 +440,17 @@ class EtuformIsiContainer extends Component {
                         <SelectFormComponent text="Session :" id="sessionid" options={this.state.sessions} onChange={this.onChangeSession} selected={this.state.student[0].sessionid} />
                     </div>
                     <div className="form-group row">
-                        <RadioFormComponent legend="Student is going to prepaid is fees?" id="isfeesprepaid" name="isfeesprepaid" options={this.state.yesno} checked={this.state.student[0].isfeesprepaid} />
+                        <RadioFormComponent legend="Student is going to prepaid is fees ?" id="isfeesprepaid" name="isfeesprepaid" options={this.state.yesno} checked={this.state.student[0].isfeesprepaid} />
                     </div>
                     <div className="form-group row">
-                        <RadioFormComponent legend="Student is on a exchange program?" id="isexchangestudent" name="isexchangestudent" options={this.state.yesno} checked={this.state.student[0].isexchangestudent} />
+                        <RadioFormComponent legend="Student is on a exchange program ?" id="isexchangestudent" name="isexchangestudent" options={this.state.yesno} checked={this.state.student[0].isexchangestudent} />
                     </div>
                     <div className="form-group row">
-                        <ButtonSubmitComponent text='Save Personnal info' className="btn btn-success" onClick={(e) => { if (window.confirm('Are you sure you want to edit this student?')) this.setUpdateForPersonal(e) }} />
+                        <ButtonSubmitComponent text='Save personal information' className="btn btn-success" onClick={(e) => { if (window.confirm('Are you sure you want to make changes for this student ?')) this.setUpdateForPersonal(e) }} />
                     </div>
                 </div>
 
             </form>
-
-
         )
     }
 

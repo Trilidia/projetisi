@@ -300,31 +300,30 @@ class FormProgrammeContainer extends Component {
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        {this.returnInput("condition of acceptance :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Condition of acceptance :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
-                        {this.returnInput("time start program :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
-                    </div>
-                    <div className="form-group row justify-content-center">
-
-                        {this.returnInput("time end program :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                        {this.returnInput("Time start program :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
 
+                        {this.returnInput("Time end program :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    </div>
+                    <div className="form-group row justify-content-center">
                         <div className="form-group row">
-                            <RadioFormComponent legend="Program is active?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.programme[0].isactive} />
+                            <RadioFormComponent legend="Program is active ?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.programme[0].isactive} />
                         </div>
                     </div>
                     <div className="form-group row justify-content-center">
 
                         <div className="form-group row">
-                            <RadioFormComponent legend="Academic status?" id="academicstatus" name="academicstatus" options={this.state.academicstatusValue} checked={this.state.programme[0].academicstatus} />
+                            <RadioFormComponent legend="Academic status ?" id="academicstatus" name="academicstatus" options={this.state.academicstatusValue} checked={this.state.programme[0].academicstatus} />
                         </div>
                     </div>
                     <div className="form-group row justify-content-center">
 
                         <div className="form-group row">
-                            <RadioFormComponent legend="Type of trainning?" id="typeoftraining" name="typeoftraining" options={this.state.typeoftrainingValue} checked={this.state.programme[0].typeoftraining} />
+                            <RadioFormComponent legend="Type of trainning ?" id="typeoftraining" name="typeoftraining" options={this.state.typeoftrainingValue} checked={this.state.programme[0].typeoftraining} />
                         </div>
                     </div>
                     <div className="form-group row justify-content-center">

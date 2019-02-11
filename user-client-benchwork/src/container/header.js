@@ -10,10 +10,7 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark mr-auto bg-dark justify-content-center">
-                    
-                        <a className="navbar-brand" href="#" onClick={this.props.clickOnSubmit}>Institut Supérieur d Informatique</a>
-            
-
+                    <a className="navbar-brand" href="#" onClick={this.props.clickOnSubmit}>Institut Supérieur d'Informatique(ISI)</a>
                 </nav>
 
 

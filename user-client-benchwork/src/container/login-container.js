@@ -34,11 +34,11 @@ class LoginContainer extends Component {
             .then(response => this.setState({ login: response.data }))
             .then(() => this.props.login(this.state.login))
 
-            this.props.setUserName(this.state.username);
+        this.props.setUserName(this.state.username);
 
     }
-    
-  
+
+
 
     render() {
         return (
@@ -72,7 +72,7 @@ class LoginContainer extends Component {
                         />
                     </div>
                     <div className="form-group row justify-content-center">
-                        <button type="submit" className="btn btn-dark">Log in</button>
+                        <button type="submit" className="btn btn-dark">Sign in</button>
                     </div>
                 </form>
             </div>

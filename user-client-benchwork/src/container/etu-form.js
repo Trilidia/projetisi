@@ -71,7 +71,7 @@ class EtuformContainer extends Component {
         this.applyValueOfRadio = this.applyValueOfRadio.bind(this);
         this.testIdUniqueIdNumber = this.testIdUniqueIdNumber.bind(this);
 
-        this.resetComponent= this.resetComponent.bind(this)
+        this.resetComponent = this.resetComponent.bind(this)
     }
     componentDidMount() {
         APIService.get("programform").then(response => {
@@ -88,50 +88,50 @@ class EtuformContainer extends Component {
         }
 
         let propsId = this.props.idstudent;
-        if(propsId!=0){
+        if (propsId != 0) {
             APIService.post('getstudentbyid', {
                 idstudent: propsId
             }).then(response => {
                 this.setState({ student: response.data });
             })
         }
-
-
     }
 
-    componentWillReceiveProps(){
+    componentWillReceiveProps() {
         this.resetComponent()
     }
 
-    resetComponent(){
+    resetComponent() {
         console.log('rentre1') // eslint-disable-line
-        this.setState({student: [{
-            streetname: "",
-            streetno: "",
-            apt: "",
-            postalcode: "",
-            pobox: "",
-            province: "",
-            country:"",
-            city: "",
-            firstname: "",
-            lastname: "",
-            birthday: "",
-            email: "",
-            telephone: "",
-            programid: "",
-            sessionid: "",
-            hasCAQorMIDI: "",
-            isfeesprepaid: "",
-            idnumber: 0,
-            verdictid: 3,
-            statutid: 4,
-            isexchangestudent: "",
-            isbillpaid: 0,
-            isfactured: 0,
-            idstudent: 0
-        }]})
-        this.setState({displayErrors:false})
+        this.setState({
+            student: [{
+                streetname: "",
+                streetno: "",
+                apt: "",
+                postalcode: "",
+                pobox: "",
+                province: "",
+                country: "",
+                city: "",
+                firstname: "",
+                lastname: "",
+                birthday: "",
+                email: "",
+                telephone: "",
+                programid: "",
+                sessionid: "",
+                hasCAQorMIDI: "",
+                isfeesprepaid: "",
+                idnumber: 0,
+                verdictid: 3,
+                statutid: 4,
+                isexchangestudent: "",
+                isbillpaid: 0,
+                isfactured: 0,
+                idstudent: 0
+            }]
+        })
+        this.setState({ displayErrors: false })
     }
 
     handleSubmit(event) {
@@ -144,7 +144,7 @@ class EtuformContainer extends Component {
         if (this.state.enableValidation) {
             if (!event.target.checkValidity()) {
                 this.setState({ displayErrors: true })
-                backToAcc=false;
+                backToAcc = false;
                 return;
             } else if (idstudent == 0) {
                 this.createStudent();
@@ -159,8 +159,8 @@ class EtuformContainer extends Component {
                 this.updateStudent();
             }
         }
-        
-        if(backToAcc==true){
+
+        if (backToAcc == true) {
             this.props.clickOnSubmit();
             this.props.changePhase(0);
         }
@@ -225,7 +225,7 @@ class EtuformContainer extends Component {
 
     generatedIdNumber() {
         console.log('generated')//eslint-disable-line
-        
+
         let random = Math.floor((Math.random() * 1000000000) - 1)
         var statename = { ...this.state.student }
         statename[0].idnumber = random;
@@ -406,7 +406,7 @@ class EtuformContainer extends Component {
         statename[0].hasCAQorMIDI = value;
         this.setState({ statename })
     }
-    
+
 
     turnOnValidation() {
         this.setState({ enableValidation: true });
@@ -418,7 +418,7 @@ class EtuformContainer extends Component {
         this.setState({ enableValidation: false });
         var student = { ...this.state.student }
         student[0].statutid = 4;
-        
+
         student[0].programid = -1;
         student[0].sessionid = -1;
         this.setState({ student })
@@ -435,7 +435,7 @@ class EtuformContainer extends Component {
             <form onSubmit={this.handleSubmit} className={displayErrors ? 'was-validated' : ''} noValidate>
 
                 <div className="container">
-                    <h2>Personnal information</h2>
+                    <h2>Personal information</h2>
 
                     <div className="form-group row">
                         {this.returnInput("Firstname :", "text", "firstname", this.state.student[0].firstname, "First name", this.changeFirstname, "\\D+", "col-md-3", "form-control", "Can't be empty, write n/a if the student doesn't have first name", this.state.enableValidation, "required")}
@@ -462,7 +462,7 @@ class EtuformContainer extends Component {
                     </div>
 
                     <div className="form-group row">
-                        <RadioFormComponent legend="Certificat d'acceptation du Quebec (CAQ) or Ministere de l'immigration, Diversite et Inclusion (MIDI) letter :" id="hasCAQorMIDI" name="hasCAQorMIDI" options={this.state.yesno} checked={this.state.student[0].hasCAQorMIDI} onChange={this.onChangeHasCAQorMIDI} />
+                        <RadioFormComponent legend="Certificate of Acceptance of Quebec(CAQ) or Ministry of Immigration, Diversity and Inclusion(MIDI) letter :" id="hasCAQorMIDI" name="hasCAQorMIDI" options={this.state.yesno} checked={this.state.student[0].hasCAQorMIDI} onChange={this.onChangeHasCAQorMIDI} />
                     </div>
 
                     <div className="form-group row">
@@ -470,16 +470,16 @@ class EtuformContainer extends Component {
                         <SelectFormComponent text="Session :" id="sessionid" options={this.state.sessions} onChange={this.onChangeSession} selected={this.state.student[0].sessionid} />
                     </div>
                     <div className="form-group row">
-                        <RadioFormComponent legend="Student is going to prepaid is fees?" id="isfeesprepaid" name="isfeesprepaid" options={this.state.yesno} checked={this.state.student[0].isfeesprepaid} />
+                        <RadioFormComponent legend="Student is going to prepaid is fees ?" id="isfeesprepaid" name="isfeesprepaid" options={this.state.yesno} checked={this.state.student[0].isfeesprepaid} />
                     </div>
                     <div className="form-group row">
-                        <RadioFormComponent legend="Student is on a exchange program?" id="isexchangestudent" name="isexchangestudent" options={this.state.yesno} checked={this.state.student[0].isexchangestudent} />
+                        <RadioFormComponent legend="Student is on a exchange program ?" id="isexchangestudent" name="isexchangestudent" options={this.state.yesno} checked={this.state.student[0].isexchangestudent} />
                     </div>
                     <div className="form-group row">
 
-                        <button onClick={this.turnOnValidation} className="btn btn-success" >Save And Submit</button>
+                        <button onClick={this.turnOnValidation} className="btn btn-success" >Save and submit</button>
 
-                        <button onClick={this.turnOffValidation} className="btn btn-danger" >Save And without submit</button>
+                        <button onClick={this.turnOffValidation} className="btn btn-danger" >Save without submitting</button>
 
                     </div>
                 </div>

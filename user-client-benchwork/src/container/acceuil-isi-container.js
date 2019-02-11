@@ -37,9 +37,6 @@ class AcceuilIsiContainer extends Component {
         this.saveChanges = this.saveChanges.bind(this);
         //this.changePhaseToSession = this.changePhaseToSession.bind(this)
         this.handleClick = this.handleClick.bind(this);
-
-
-
     }
 
     /*changePhaseToSession() {
@@ -70,8 +67,6 @@ class AcceuilIsiContainer extends Component {
         this.getSelectAll()
         this.getAllStatus()
         this.getAllVerdict()
-
-
     }
 
 
@@ -383,8 +378,6 @@ class AcceuilIsiContainer extends Component {
                             <br />
                             <button className="btn btn-secondary col-md-12 mb-12 mt-100">Display</button>
                             <br />
-
-
                         </form>
                         <br />
                         <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
@@ -401,7 +394,6 @@ class AcceuilIsiContainer extends Component {
                                     writeComment={this.props.setIdStudentComment}
                                     consultstudent={this.props.setStudentInfo}
                                     setStudentEdit={this.props.setStudentEdit}
-
                                 />
                             </tbody>
                         </table >

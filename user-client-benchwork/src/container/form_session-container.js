@@ -166,17 +166,17 @@ class FormSessionContainer extends Component {
                     {this.returnInput("Year :", "text", "year", this.state.session[0].yearsession, "", this.onChangeYear, "^[0-9]{4}$", "col-md-3", "form-control", "Can't be empty, number 4 only", this.state.enableValidation, "required")}
                 </div>
                 <div className="form-group row justify-content-center">
-                    {this.returnInput("Date start :", "text", "datestart", this.state.session[0].datestartsession, "YYYY/MM/DD", this.onChangeDateStart, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    {this.returnInput("Start date :", "text", "datestart", this.state.session[0].datestartsession, "YYYY/MM/DD", this.onChangeDateStart, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                 </div>
                 <div className="form-group row justify-content-center">
-                    {this.returnInput("Date End :", "text", "dateend", this.state.session[0].dateendsession, "YYYY/MM/DD", this.onChangeDateEnd, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    {this.returnInput("End date :", "text", "dateend", this.state.session[0].dateendsession, "YYYY/MM/DD", this.onChangeDateEnd, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                 </div>
 
                 <div className="form-group row justify-content-center">
-                    <RadioFormComponent legend="is the session active?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.session[0].isactive} />
+                    <RadioFormComponent legend="Is the session active ?" id="isactive" name="isactive" options={this.state.yesno} checked={this.state.session[0].isactive} />
                 </div>
                 <div className="form-group row justify-content-center">
-                    <button className="btn btn-success">{this.props.idsession != null ? 'update' : 'submit'}</button>
+                    <button className="btn btn-success">{this.props.idsession != null ? 'Update' : 'Submit'}</button>
                 </div>
             </form>
 
