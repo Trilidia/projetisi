@@ -112,6 +112,7 @@ class FormProgrammeContainer extends Component {
                 this.addProgramme()
             }
         }
+        this.props.changeisclickedit()
     }
 
     addProgramme() {

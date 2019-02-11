@@ -25,6 +25,9 @@ class TableSessionContainer extends Component {
     componentDidMount() {
         this.getAllSessioon()
     }
+    componentWillMount(){
+        this.getAllSessioon()
+    }
 
     changeisclickedit(id) {
         this.props.changeisclickedit(id)

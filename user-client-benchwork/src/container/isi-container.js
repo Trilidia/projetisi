@@ -22,6 +22,7 @@ class IsiContainer extends Component {
         this.setIdStudentComment = this.setIdStudentComment.bind(this);
         this.setStudentInfo = this.setStudentInfo.bind(this);
         this.setStudentEdit=this.setStudentEdit.bind(this);
+        this.setBackToHome=this.setBackToHome.bind(this)
     }
 
     changePhase(nbPhase) {
@@ -43,6 +44,10 @@ class IsiContainer extends Component {
         console.log("bb"+studentid) //eslint-disable-line
         this.setState({studentInfo: studentid})
         this.setState({ phase: 5 })
+    }
+
+    setBackToHome(){
+        this.setState({ phase: 0 })
     }
 
     setStudentEdit(studentid){

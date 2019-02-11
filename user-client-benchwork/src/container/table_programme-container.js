@@ -22,6 +22,9 @@ class TableProgrammeContainer extends Component {
     componentDidMount() {
         this.getAllProgramme()
     }
+    componentWillMount(){
+          this.getAllProgramme()
+    }
 
     changeisclickedit(id) {
         this.props.changeisclickedit(id)

@@ -17,13 +17,15 @@ class CreateUserContainer extends Component {
             enableValidation: true,
             enableAlert: false,
             displayErrors: false,
+            userNameCreate : '',
+            displayAlertCreateSuccess:  false
         }
 
         this.changeUsername = this.changeUsername.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.changePasswordConfirme = this.changePasswordConfirme.bind(this);
         this.turnOnAlert = this.turnOnAlert.bind(this);
-
+        this.alertCreateUserSuccess = this.alertCreateUserSuccess.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
@@ -51,11 +53,25 @@ class CreateUserContainer extends Component {
                 password: this.state.user[0].password,
                 isadmin: this.state.user[0].isAdmin
             })
-            this.props.changePhase(0);
-           
-            
+            let userName = this.state.user[0].username;
+            this.alertCreateUserSuccess(userName);
+
         }
 
+        
+
+    }
+
+    alertCreateUserSuccess(UserName){
+        var statename = { ...this.state.user }
+        statename[0].username = "";
+        statename[0].password = "";
+        statename[0].passwordConfirme = "";
+        statename[0].isAdmin = "";
+        this.setState({ statename })
+
+        this.setState({userNameCreate:UserName})
+        this.setState({displayAlertCreateSuccess:true})
     }
 
 
@@ -119,6 +135,7 @@ class CreateUserContainer extends Component {
         return (
 
             <form onSubmit={this.handleSubmit} className={displayErrors ? 'was-validated' : ''} noValidate>
+            {this.state.displayAlertCreateSuccess?<div className="alert alert-success" role="alert">{this.state.userNameCreate} has been created</div>:<div></div>}
                 {this.state.enableAlert ? <div className="alert alert-danger" role="alert">password must match</div> : <div></div>}
                 <div className="container text-center">
                     <h2>Create user</h2>
@@ -130,7 +147,7 @@ class CreateUserContainer extends Component {
                         {this.returnInput("Password :", "password", "", this.state.user[0].password, "", this.changePassword, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
-                        {this.returnInput("Confirme password :", "password", "passwordconfirme", this.state.user[0].passwordConfirme, "", this.changePasswordConfirme, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Confirm password :", "password", "passwordconfirme", this.state.user[0].passwordConfirme, "", this.changePasswordConfirme, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
 
 

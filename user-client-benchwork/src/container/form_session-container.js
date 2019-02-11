@@ -67,16 +67,21 @@ class FormSessionContainer extends Component {
             this.setState({ displayErrors: true });
             return;
         } else {
-            if (this.props.idsession != 0) {
+            if (this.props.idsession != undefined) {
                 this.updateSession()
                 this.setState({
                     ispdate: true
+
                 })
             }
             else {
                 this.addSession()
+                this.setState({
+                    ispdate : true
+                })
             }
         }
+        this.props.changeisclickedit()
 
     }
     onChangenamesession(event) {
