@@ -68,7 +68,11 @@ class AcceuilIsiContainer extends Component {
         this.getAllStatus()
         this.getAllVerdict()
     }
-
+    componentWillMount(){
+        this.getSelectAll()
+        this.getAllStatus()
+        this.getAllVerdict()
+    }
 
     onChangeId(event) {
         this.setState({

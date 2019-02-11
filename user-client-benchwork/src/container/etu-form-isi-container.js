@@ -128,9 +128,11 @@ class EtuformIsiContainer extends Component {
         if (this.state.updateInfoFor === PERSONAL) {
             console.log(PERSONAL) //eslint-disable-line
             this.updateStudentPersonnal();
+            this.props.setBackToHome();
         } else if (this.state.updateInfoFor === ADMINISTRATION) {
             console.log(ADMINISTRATION) //eslint-disable-line
             this.updateStudentAdministrative();
+            this.props.setBackToHome();
         }
 
     }

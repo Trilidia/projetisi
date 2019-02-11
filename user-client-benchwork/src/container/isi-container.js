@@ -150,7 +150,7 @@ class IsiContainer extends Component {
                         <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} />
                     </div>
                     <div>
-                        <EtuformIsiContainer changePhase={this.changePhase} idstudentEdit={this.state.idstudentEdit} />
+                        <EtuformIsiContainer changePhase={this.changePhase} idstudentEdit={this.state.idstudentEdit} setBackToHome={this.setBackToHome} />
                     </div>
                 </div>
 

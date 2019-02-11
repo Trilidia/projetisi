@@ -16,6 +16,7 @@ class RecruteurContainer extends Component {
         }
         this.changePhase = this.changePhase.bind(this);
         this.setidstudent = this.setidstudent.bind(this);
+        this.goBackHome = this.goBackHome.bind(this);
 
 
     }
@@ -32,6 +33,9 @@ class RecruteurContainer extends Component {
         this.setState({ idstudent: idstudent })
         this.setState({ phase: nbPhase })
 
+    }
+    goBackHome(){
+        this.setState({ phase: 0 })
     }
 
 
@@ -57,7 +61,7 @@ class RecruteurContainer extends Component {
                         <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} setidstudent={this.setidstudent} />
                     </div>
                     <div>
-                        <EtuformContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
+                        <EtuformContainer changePhase={this.changePhase} idstudent={this.state.idstudent} goBackHome={this.goBackHome} />
                     </div>
                 </div>
             )

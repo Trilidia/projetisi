@@ -138,31 +138,28 @@ class EtuformContainer extends Component {
         let idstudent = this.state.student[0].idstudent;
         this.applyValueOfRadio();
 
-        let backToAcc = true;
 
         event.preventDefault();
         if (this.state.enableValidation) {
             if (!event.target.checkValidity()) {
                 this.setState({ displayErrors: true })
-                backToAcc = false;
                 return;
             } else if (idstudent == 0) {
                 this.createStudent();
+                this.props.goBackHome()
             } else if (idstudent != 0) {
                 this.updateStudent();
+                this.props.goBackHome()
             }
 
         } else {
             if (idstudent == 0) {
                 this.createStudent();
+                this.props.goBackHome()
             } else if (idstudent != 0) {
                 this.updateStudent();
+                this.props.goBackHome()
             }
-        }
-
-        if (backToAcc == true) {
-            this.props.clickOnSubmit();
-            this.props.changePhase(0);
         }
 
     }
@@ -415,12 +412,10 @@ class EtuformContainer extends Component {
         this.setState({ student })
     }
     turnOffValidation() {
-        this.setState({ enableValidation: false });
+        this.setState({ enableValidation: true });
         var student = { ...this.state.student }
         student[0].statutid = 4;
 
-        student[0].programid = -1;
-        student[0].sessionid = -1;
         this.setState({ student })
     }
 
