@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import APIService from '../service/api-service'
 import SelectComponent from "component/select-component";
-import InputComponent from "component/input-component";
+import InputComponentForm from "component/inputform-component";
 import TableStudentComponent from "component/table-student-component";
 import jsPDF from 'jspdf';
 import { properties } from '../../properties';
@@ -312,23 +312,26 @@ class AcceuilRecruteurContainer extends Component {
                         <img src={require('../images/isi.png')} />
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
-                            <InputComponent
-                                text="Id"
+                            <InputComponentForm
                                 id="id"
                                 type="text"
                                 value={this.state.idStudent}
                                 onChange={this.onChangeId}
-                                className="form-control"
-                            />
+                                classesinput="form-control"
+                                placeholder="Id"
 
-                            <InputComponent
-                                text="Name"
+                            />
+                           
+
+                            <InputComponentForm
                                 id="name"
                                 type="text"
                                 value={this.state.nameStudent}
                                 onChange={this.onChangeName}
-                                className="form-control"
+                                classesinput="form-control"
+                                placeholder="Name"
                             />
+                            <br />
 
                             <SelectComponent
                                 name="statut"

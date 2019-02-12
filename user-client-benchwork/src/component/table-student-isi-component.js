@@ -11,7 +11,7 @@ const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultst
         <th>Verdict</th>
         <th>Status</th>
         <th>Factured</th>
-        <th>Bill Payaid</th>
+        <th>Bill Paid</th>
         <th>Consult</th>
         <th>Edit</th>
         <th>Letter of acceptence</th>

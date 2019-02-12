@@ -12,10 +12,10 @@ class CommentRecrutContainer extends Component {
             nameUser: '',
             textmsg: "",
             studentid: 0,
+            displayErrors: false,
         }
 
         this.onChangeTextarea = this.onChangeTextarea.bind(this);
-
         this.addComment = this.addComment.bind(this);
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
@@ -25,10 +25,7 @@ class CommentRecrutContainer extends Component {
     componentDidMount() {
         this.getAllCommentByStudentId(this.props.idstudent);
         this.setState({ studentid: this.props.idstudent })
-        this.setState({
-            nameUser: this.props.username
-        })
-
+        this.setState({ nameUser: this.props.username })
     }
 
 
@@ -49,7 +46,12 @@ class CommentRecrutContainer extends Component {
     }
 
     addComment() {
-        if (this.state.textmsg != '') {
+        if (this.state.textmsg == '') {
+            this.setState({ displayErrors: true })
+        }
+
+        else {
+
             APIService.post('addcomment', {
                 nameuser: this.state.nameUser,
                 text: this.state.textmsg,
@@ -57,6 +59,7 @@ class CommentRecrutContainer extends Component {
             })
             this.getAllCommentByStudentId(this.state.studentid);
             this.setState({ textmsg: "" });
+            this.setState({ displayErrors: false })
         }
         this.getAllCommentByStudentId(this.state.studentid);
     }
@@ -73,7 +76,7 @@ class CommentRecrutContainer extends Component {
                 </div>
                 <div className="container">
 
-                    <form >
+                    <form className={this.state.displayErrors ? 'was-validated' : ""} noValidate>
                         <h2>{this.state.nameUser}</h2>
 
 
@@ -86,6 +89,7 @@ class CommentRecrutContainer extends Component {
                             onChange={this.onChangeTextarea}
                             errorMessage="Can't be empty"
                             placeholder="Your Comment"
+                            required="required"
                         />
 
                     </form>

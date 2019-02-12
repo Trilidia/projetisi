@@ -11,6 +11,7 @@ class CommentContainer extends Component {
             nameUser: '',
             textmsg: "",
             studentid: 0,
+            displayErrors: false,
 
         }
 
@@ -19,18 +20,18 @@ class CommentContainer extends Component {
         this.getAllCommentByStudentId = this.getAllCommentByStudentId.bind(this);
 
     }
-    
+
 
     componentDidMount() {
         this.getAllCommentByStudentId(this.props.idstudentcomment);
         this.setState({ studentid: this.props.idstudentcomment })
-        this.setState({nameUser: this.props.username})
-      
+        this.setState({ nameUser: this.props.username })
+
     }
-    
+
 
     getAllCommentByStudentId(id) {
-       
+
         APIService.post('getcommentbyidstudent', {
             idstudent: id
         }).then(response => {
@@ -44,20 +45,26 @@ class CommentContainer extends Component {
     }
 
     addComment() {
-        if (this.state.textmsg != '') {
+        if (this.state.textmsg == '') {
+            this.setState({ displayErrors: true })
+        }
+
+        else {
+
             APIService.post('addcomment', {
                 nameuser: this.state.nameUser,
                 text: this.state.textmsg,
                 studentid: this.state.studentid
             })
-            
+
             this.getAllCommentByStudentId(this.state.studentid);
             this.setState({ textmsg: "" });
+            this.setState({ displayErrors: false })
         }
         this.getAllCommentByStudentId(this.state.studentid);
 
     }
-  
+
 
     render() {
 
@@ -69,7 +76,7 @@ class CommentContainer extends Component {
                 </div>
                 <div className="container">
 
-                    <form>
+                    <form className={this.state.displayErrors ? 'was-validated' : ""} noValidate>
                         <h2>{this.state.nameUser}</h2>
 
 
@@ -82,6 +89,7 @@ class CommentContainer extends Component {
                             onChange={this.onChangeTextarea}
                             errorMessage="Can't be empty"
                             placeholder="Your Comment"
+                            required="required"
                         />
 
                     </form>
@@ -90,7 +98,7 @@ class CommentContainer extends Component {
                         <button type="button" className="btn btn-danger btn-lg ml-auto col-sm-4" onClick={() => this.props.changePhase(0)}>Cancel</button>
 
                     </div>
-                    <br/>
+                    <br />
                     <TableCommentComponent
                         comments={this.state.comments}
                     />

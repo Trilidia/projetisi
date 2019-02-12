@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import APIService from '../service/api-service'
 import SelectComponent from "component/select-component";
-import InputComponent from "component/input-component";
+import InputComponentForm from "component/inputform-component";
 import TableStudentIsiComponent from "component/table-student-isi-component";
 import { properties } from '../../properties';
 import { imgdata } from '../utils/img-data';
@@ -68,7 +68,7 @@ class AcceuilIsiContainer extends Component {
         this.getAllStatus()
         this.getAllVerdict()
     }
-    componentWillMount(){
+    componentWillMount() {
         this.getSelectAll()
         this.getAllStatus()
         this.getAllVerdict()
@@ -342,24 +342,24 @@ class AcceuilIsiContainer extends Component {
                         <img src={require('../images/isi.png')} />
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
-                            <InputComponent
-                                text="Id"
+                            <InputComponentForm
                                 id="id"
                                 type="text"
                                 value={this.state.idStudent}
                                 onChange={this.onChangeId}
-                                className="form-control"
-                            />
+                                classesinput="form-control"
+                                placeholder="Id"
 
-                            <InputComponent
-                                text="Name"
+                            />
+                            <InputComponentForm
                                 id="name"
                                 type="text"
                                 value={this.state.nameStudent}
                                 onChange={this.onChangeName}
-                                className="form-control"
+                                classesinput="form-control"
+                                placeholder="Name"
                             />
-
+                            <br />
                             <SelectComponent
                                 name="statut"
                                 className="form-control"
@@ -378,7 +378,6 @@ class AcceuilIsiContainer extends Component {
                                 options={this.state.verdict}
                                 onChange={this.onChangeVerdict}
                             />
-
                             <br />
                             <button className="btn btn-secondary col-md-12 mb-12 mt-100">Display</button>
                             <br />
@@ -387,21 +386,15 @@ class AcceuilIsiContainer extends Component {
                         <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
                     </div>
                     <div className="col-md-10 mb-10">
-                        <table className="table" id="myTable">
-
-                            <tbody>
-                                <TableStudentIsiComponent
-                                    students={this.state.students}
-                                    verdict={this.state.verdict}
-                                    status={this.state.status}
-                                    createpdf={this.handleClick}
-                                    writeComment={this.props.setIdStudentComment}
-                                    consultstudent={this.props.setStudentInfo}
-                                    setStudentEdit={this.props.setStudentEdit}
-                                />
-                            </tbody>
-                        </table >
-
+                        <TableStudentIsiComponent
+                            students={this.state.students}
+                            verdict={this.state.verdict}
+                            status={this.state.status}
+                            createpdf={this.handleClick}
+                            writeComment={this.props.setIdStudentComment}
+                            consultstudent={this.props.setStudentInfo}
+                            setStudentEdit={this.props.setStudentEdit}
+                        />
                     </div>
                 </div>
             </div>

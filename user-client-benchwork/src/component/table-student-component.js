@@ -3,7 +3,7 @@ import SubmitComponent from "component/submit-component";
 const TableStudentComponent = ({ students,  createpdf, setidstudent }) => (
 
   <table className="table">
-    <thead className="thead-dark">
+    <thead className="thead">
       <tr>
         <th>Id Number</th>
         <th>Full Name</th>

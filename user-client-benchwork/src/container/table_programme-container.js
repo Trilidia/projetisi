@@ -32,7 +32,7 @@ class TableProgrammeContainer extends Component {
     render() {
 
         return (
-            <div className="table-responsive-sm container">
+            <div className="table-responsive-sm-12">
                 <table className="table table-bordered">
                     <thead>
                         <tr>

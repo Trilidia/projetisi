@@ -39,8 +39,8 @@ class GlobalSessionContainer extends Component {
         this.setState(function (prevState) {
             return { showFormIsClick: !prevState.showFormIsClick };
         });
-        if(this.state.showFormIsClick){
-            this.setState({idsession:null})
+        if (this.state.showFormIsClick) {
+            this.setState({ idsession: null })
         }
 
 
@@ -53,13 +53,22 @@ class GlobalSessionContainer extends Component {
 
         return (
             <div>
+                <br />
+                <br />
+
                 <div className="row justify-content-center">
                     <h1>Sessions</h1>
                 </div>
+                <br />
+                <br />
+
                 <div className='mx-auto justify-content-center'>
                     <button onClick={this.changeisclickedit} className="btn btn-dark btn-lg">
                         {this.state.showFormIsClick ? 'Show the list of sessions' : 'Add session'}
                     </button>
+                    <br />
+                    <br />
+
                     {this.state.showFormIsClick ? <FormSessionContainer changeisclickedit={this.changeisclickedit} idsession={this.state.idsession} /> : <TableSessionContainer changeisclickedit={this.changeisclickedit} />}
                 </div>
             </div >

@@ -33,7 +33,7 @@ class GlobalProgrammeContainer extends Component {
 
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.getAllProgramme()
     }
     changeisclickedit(id) {
@@ -44,8 +44,8 @@ class GlobalProgrammeContainer extends Component {
         this.setState(function (prevState) {
             return { showFormIsClick: !prevState.showFormIsClick };
         });
-        if(this.state.showFormIsClick){
-            this.setState({idprogramme:null})
+        if (this.state.showFormIsClick) {
+            this.setState({ idprogramme: null })
         }
     }
 
@@ -53,14 +53,21 @@ class GlobalProgrammeContainer extends Component {
 
         return (
             <div>
+                <br />
                 <div className="row justify-content-center">
                     <h1>Programs</h1>
                 </div>
+                <br />
+                <br />
+
                 <div>
                     <button onClick={this.changeisclickedit} className="btn btn-secondary">
                         {this.state.showFormIsClick ? 'Show the list of programme' : 'Add programme'}
                     </button>
-                    <div className='container'>
+                    <br />
+                    <br />
+
+                    <div className=''>
                         {this.state.showFormIsClick ? <FormProgrammeContainer changeisclickedit={this.changeisclickedit} idprogram={this.state.idprogramme} /> : <TableProgrammeContainer changeisclickedit={this.changeisclickedit} />}
                     </div>
                 </div>
