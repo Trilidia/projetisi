@@ -42,24 +42,24 @@ class TableSessionContainer extends Component {
                     <thead>
                         <tr>
 
-                            <th scope="col">Name</th>
-                            <th scope="col">Year</th>
-                            <th scope="col">Start date</th>
-                            <th scope="col">Completion date</th>
-                            <th scope="col">Is active</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col" className="text-center">Name</th>
+                            <th scope="col" className="text-center">Year</th>
+                            <th scope="col" className="text-center">Start date</th>
+                            <th scope="col" className="text-center">Completion date</th>
+                            <th scope="col" className="text-center">Is active</th>
+                            <th scope="col" className="text-center">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             this.state.session.map((value, cle) =>
                                 <tr key={cle}>
-                                    <td >{value.namesession}</td>
-                                    <td >{value.yearsession}</td>
-                                    <td >{value.datestartsession}</td>
-                                    <td >{value.dateendsession}</td>
-                                    <td >{(value.isactive == 1) ? 'true' : 'false'}</td>
-                                    <td><button onClick={() => this.changeisclickedit(value.idsession)} className="btn btn-outline-warning" >Edit</button></td>
+                                    <td className="text-center">{value.namesession}</td>
+                                    <td className="text-center">{value.yearsession}</td>
+                                    <td className="text-center">{value.datestartsession}</td>
+                                    <td className="text-center">{value.dateendsession}</td>
+                                    <td className="text-center">{(value.isactive == 1) ? 'true' : 'false'}</td>
+                                    <td className="text-center"><button onClick={() => this.changeisclickedit(value.idsession)} className="btn btn-outline-warning" >Edit</button></td>
                                 </tr>
                             )
                         }
