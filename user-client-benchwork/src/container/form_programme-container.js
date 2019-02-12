@@ -14,7 +14,7 @@ class FormProgrammeContainer extends Component {
                 sigle: '',
                 totalduration: '',
                 intershipduration: '',
-                hasintership: "",
+                hasintership: 1,
                 level: '',
                 price: "",
                 isactive: "",
@@ -52,6 +52,7 @@ class FormProgrammeContainer extends Component {
         this.onchangetimeendprogram = this.onchangetimeendprogram.bind(this)
         this.onchangetimestartprogram = this.onchangetimestartprogram.bind(this)
         //
+        this.onChangeRadio = this.onChangeRadio.bind(this);
 
 
         this.getProgrammeById = this.getProgrammeById.bind(this)
@@ -263,14 +264,24 @@ class FormProgrammeContainer extends Component {
         statename[0].typeoftraining = typeoftrainingValue;
         this.setState({ statename })
     }
+
+    onChangeRadio(event) {
+        var statename = { ...this.state.programme }
+        const value = function () {
+            return this.target.value;
+        }.bind(event)();
+        statename[0].hasintership = value;
+        this.setState({ statename })
+
+    }
     returnInput(text, type, id, value, placeholder, onChange, pattern, classesdiv, classesinput, errorMessage, enableValidation, required) {
         return <InputComponentForm text={text} type={type} id={id} value={value} placeholder={placeholder} onChange={onChange} pattern={enableValidation ? pattern : ""} classesdiv={classesdiv} classesinput={classesinput} required={required != undefined ? "required" : ""} errorMessage={errorMessage} spantext={required != undefined ? "*" : ""} />
     }
     render() {
         const { displayErrors } = this.state;
         return (
-            <div className='container'>
 
+            <div className='container'>
                 <form onSubmit={this.checkedSubmitOrUpdate} className={displayErrors ? 'was-validated' : ''} id='idfrom' noValidate>
                     <div className="form-group row justify-content-center">
                         {this.returnInput("Title of program :", "text", "namession", this.state.programme[0].titleprogram, "", this.onChangetitleprogram, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
@@ -284,12 +295,12 @@ class FormProgrammeContainer extends Component {
                     </div>
                     <div className="form-group row justify-content-center">
                         <div className="form-group row">
-                            <RadioFormComponent legend="Program has a intership ?" id="hasintership" name="hasintership" options={this.state.yesno} checked={this.state.programme[0].hasintership} />
+                            <RadioFormComponent legend="Program has a intership ?" id="hasintership" name="hasintership" options={this.state.yesno} onClick={this.onChangeRadio} checked={this.state.programme[0].hasintership} />
                         </div>
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        {this.returnInput("Intership duration :", "text", "intershipduration", this.state.programme[0].intershipduration, "", this.onchangeIntershipDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.state.programme[0].hasintership != 0 ? this.returnInput("Intership duration :", "text", "intershipduration", this.state.programme[0].intershipduration, "", this.onchangeIntershipDuration, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required") : ""}
                     </div>
                     <div className="form-group row justify-content-center">
 
