@@ -12,8 +12,7 @@ class HeaderIsiContainer extends Component {
 
                 <nav className="navbar navbar-dark bg-dark">
 
-                    <ul className="nav d-flex">
-
+                    <ul className="nav w-100">
 
                         <li className="nav-item p-2">
                             <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(0)}>Home</a>
@@ -22,14 +21,13 @@ class HeaderIsiContainer extends Component {
                             <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(1)}>Session</a>
                         </li>
                         <li className="nav-item p-2">
-                            <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(2)}>Pogram</a>
+                            <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(2)}>Program</a>
                         </li>
                         <li className="nav-item p-2">
                             <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(3)}>New user</a>
                         </li>
 
-
-                        <li className="nav-item ml-auto p-2">
+                        <li className="nav-item p-2">
                             <a className="navbar-brand" href="#" onClick={this.props.logout}>Sign out</a>
                         </li>
 

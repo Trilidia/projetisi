@@ -10,8 +10,7 @@ class LoginContainer extends Component {
             username: '',
             password: '',
             submitted: false,
-            login: 0,
-            start: false
+            login: -1,
         }
         this.onChangedUsername = this.onChangedUsername.bind(this)
         this.onChangedPassword = this.onChangedPassword.bind(this)
@@ -27,9 +26,6 @@ class LoginContainer extends Component {
     }
 
     handleSubmit(event) {
-        if(this.state.start==false){
-            this.setState({ start: true })
-        }
         event.preventDefault();
         APIService.post('testlogin', {
             username: this.state.username,
@@ -49,7 +45,7 @@ class LoginContainer extends Component {
             <div>
 
                 <HeaderContainer />
-                {(this.state.start==true&&this.state.login==0)?<div className="alert alert-danger" role="alert">{this.state.userNameCreate} Username or Password Invalid </div>:<div></div>}
+                {(this.state.login==0)?<div className="alert alert-danger" role="alert">{this.state.userNameCreate} Username or Password Invalid </div>:<div></div>}
                 <div className="row justify-content-center">
                     <h1>Login</h1>
                 </div>
