@@ -62,7 +62,7 @@ class GlobalProgrammeContainer extends Component {
 
                 <div>
                     <button onClick={this.changeisclickedit} className="btn btn-secondary">
-                        {this.state.showFormIsClick ? 'Show the list of programme' : 'Add programme'}
+                        {this.state.showFormIsClick ? 'Show programs' : 'Add program'}
                     </button>
                     <br />
                     <br />
@@ -78,15 +78,3 @@ class GlobalProgrammeContainer extends Component {
     }
 }
 export default GlobalProgrammeContainer
-
-
-/*changeStateValue(event) {
-
-    const stateObject = function () {
-        const returnObj = {};
-        returnObj[this.target.id] = this.target.value;
-        return returnObj;
-    }.bind(event)();
-
-    this.setState(stateObject);
-}*/

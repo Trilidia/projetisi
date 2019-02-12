@@ -174,7 +174,7 @@ class FormSessionContainer extends Component {
                     {this.returnInput("Start date :", "text", "datestart", this.state.session[0].datestartsession, "YYYY/MM/DD", this.onChangeDateStart, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                 </div>
                 <div className="form-group row justify-content-center">
-                    {this.returnInput("End date :", "text", "dateend", this.state.session[0].dateendsession, "YYYY/MM/DD", this.onChangeDateEnd, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                    {this.returnInput("Competion date :", "text", "dateend", this.state.session[0].dateendsession, "YYYY/MM/DD", this.onChangeDateEnd, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-3", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                 </div>
 
                 <div className="form-group row justify-content-center">

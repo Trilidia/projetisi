@@ -42,12 +42,12 @@ class TableSessionContainer extends Component {
                     <thead>
                         <tr>
 
-                            <th scope="col">name</th>
-                            <th scope="col">year</th>
-                            <th scope="col">datestart</th>
-                            <th scope="col">dateend</th>
-                            <th scope="col">isactive</th>
-                            <th scope="col">editer</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Start date</th>
+                            <th scope="col">Completion date</th>
+                            <th scope="col">Is active</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>

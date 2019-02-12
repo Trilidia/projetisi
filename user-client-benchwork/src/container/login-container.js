@@ -58,7 +58,6 @@ class LoginContainer extends Component {
                             value={this.state.username}
                             onChange={this.onChangedUsername}
                             className="form-control"
-
                         />
                     </div>
                     <div className="form-group row justify-content-center">
@@ -69,7 +68,6 @@ class LoginContainer extends Component {
                             value={this.state.password}
                             onChange={this.onChangedPassword}
                             className="form-control"
-
                         />
                     </div>
                     <div className="form-group row justify-content-center">

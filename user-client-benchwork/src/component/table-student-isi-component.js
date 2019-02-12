@@ -7,14 +7,14 @@ const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultst
     <thead className="thead-danger">
       <tr>
         <th>Id Number</th>
-        <th>Full Name</th>
+        <th>Full name</th>
         <th>Verdict</th>
         <th>Status</th>
-        <th>Factured</th>
-        <th>Bill Paid</th>
+        <th>Charged</th>
+        <th>Invoice paid</th>
         <th>Consult</th>
         <th>Edit</th>
-        <th>Letter of acceptence</th>
+        <th>Letter of acceptance</th>
         <th>Comment</th>
       </tr>
     </thead>

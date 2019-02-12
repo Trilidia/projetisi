@@ -62,8 +62,10 @@ class IsiContainer extends Component {
             return (
                 <div>
                     <div>
-                        <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} />
-                        <h2>hello {this.state.username}</h2>
+                        <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} username={this.state.username}/>
+                        <br/>
+
+                        <br/>
                     </div>
                     <div>
                         <AcceuilIsiContainer changePhase={this.changePhase} setIdStudentComment={this.setIdStudentComment} setStudentInfo={this.setStudentInfo} setStudentEdit={this.setStudentEdit}/>

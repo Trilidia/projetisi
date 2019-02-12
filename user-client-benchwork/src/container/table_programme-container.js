@@ -43,7 +43,7 @@ class TableProgrammeContainer extends Component {
                             <th scope="col">Has intership</th>
                             <th scope="col">Intership duration</th>
                             <th scope="col">Level</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Tuitions fees</th>
                             <th scope="col">Is active</th>
                             <th scope="col">Condition of acceptance</th>
                             <th scope="col">Type of training</th>
@@ -57,7 +57,7 @@ class TableProgrammeContainer extends Component {
                     <tbody>
                         {
                             this.state.programme.map((value, cle) =>
-                                <tr key={cle}>
+                                <tr key={cle}className={(value.isactive == 2) ? '' : 'table-active'}>
 
 
                                     <td >{value.titleprogram}</td>
