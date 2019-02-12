@@ -27,10 +27,7 @@ class HeaderIsiContainer extends Component {
                             <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(3)}>New user</a>
                         </li>
                     </ul>
-                    <ul className="nav navbar-nav navbar-right row">
-                    <li>
-                        
-                    </li>
+                    <ul className="nav navbar-nav navbar-right ">
                         <li className="nav-item p-2">
                         
                             <a className="navbar-brand" href="#" onClick={this.props.logout}><span className="glyphicon glyphicon-user"></span> Logout</a>

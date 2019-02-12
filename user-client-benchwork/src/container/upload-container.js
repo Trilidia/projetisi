@@ -2,39 +2,65 @@ import React, { Component } from 'react'
 import axios from '../service/api-service'
 import FileItemComponent from '../component/filelist-component'
 
-class UploadContainer extends Component {
-  constructor() {
+class GlobalContainer extends Component {
+  constructor () {
     super()
     this.state = {
       selectedFile: '',
-      fileslist: []
+      fileName: '',
+      uploadStatus: '',
+      fileslistacademic: [],
+      identityfileslist: [],
+      selectedOption: '',
+      identityacademicfile: [
+        { value: 0, label: 'Identity file' },
+        { value: 1, label: 'Academic file' }
+      ]
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    this.getFilesList = this.getFilesList.bind(this)
-    // this.deleteFile = this.deleteFile.bind(this)
+    this.getFilesListAcademic = this.getFilesListAcademic.bind(this)
+    this.getIdentityFilesList = this.getIdentityFilesList.bind(this)
+    this.deleteFile = this.deleteFile.bind(this)
+    this.onRadioChange = this.onRadioChange.bind(this)
   }
 
-  getFilesList() {
+  componentDidMount () {
+    console.log('PD didmount') //eslint-disable-line
+    this.getFilesListAcademic()
+    this.getIdentityFilesList()
+  }
+
+  onRadioChange (e) {
+    this.setState({
+      selectedOption: e.currentTarget.value
+    })
+  }
+  getFilesListAcademic () {
     axios
-      .get('/files', {
+      .get('/academicfiles', {
         params: {
-          idstudent: 9
+          studentid: 9
         }
       })
       .then(response => {
-        this.setState({ fileslist: response.data })
+        this.setState({ fileslistacademic: response.data })
       })
-
+  }
+  getIdentityFilesList () {
+    axios
+      .get('/identityfiles', {
+        params: {
+          studentid: 9
+        }
+      })
+      .then(response => {
+        this.setState({ identityfileslist: response.data })
+      })
   }
 
-  componentDidMount() {
-    this.getFilesList()
-  }
-
-  onChange(e) {
-    // update state when form inputs change
+  onChange (e) {
     switch (e.target.name) {
       case 'selectedFile':
         this.setState({ selectedFile: e.target.files[0] })
@@ -43,72 +69,49 @@ class UploadContainer extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
   }
-  /* deleteFile () {
+  deleteFile (fileName) {
+    console.log('enter1 ' + fileName) //eslint-disable-line
     axios
-      .post('deletes')
-      .then(function (response) {
-        this.setState({
-          fileURL: `http://localhost:8095/deletes?delete=${row.filename}`,
-          uploadStatus: true
-        })
+      .post('deletes', {
+        fileURL: fileName
       })
-      .catch(function (error) {})
-    this.getFilesList()
-  } */
-  onSubmit(e) {
-    e.preventDefault()
-    // event to submit the data to the server
+      .then(response => {
+        this.setState({ uploadStatus: response.data })
+      })
+    this.getFilesListAcademic()
+    this.getIdentityFilesList()
+  }
+  onSubmit () {
     const FormData = require('form-data')
     var form = new FormData()
-
-    const files = this.filesInput.files
-
-    for (var key in files) {
-      // check if this is a file:
-      if (files.hasOwnProperty(key) && files[key] instanceof File) {
-        form.append(key, files[key], 'multipart/form-data')
-
-      }
-    }
-
-    axios
-      .post('/', form)
-      .then(function (response) {
-        this.setState({
-          fileURL: `http://192.168.0.41:8090/${body.file}`,
-          uploadStatus: true
-        })
-      })
-      .catch(function (error) { })
-    this.getFilesList()
+    const { selectedFile, selectedOption, fileName } = this.state
+    form.append('selectedOption', selectedOption)
+    form.append('selectedFile', selectedFile)
+    form.append('fileName', fileName)
+    axios.post('/', form).then(response => {
+      this.setState({ uploadStatus: response.data })
+    })
+    this.getFilesListAcademic()
+    this.getIdentityFilesList()
   }
-
-  render() {
-    if (this.state.fileslist.length === 0) {
-      return false
-    }
-
+  render () {
+    const { fileName } = this.state
     return (
       <div>
-        <form encType='multipart/form-data'>
-          <input
-            type='file'
-            name='selectedFile'
-            ref={input => {
-              this.filesInput = input
-            }}
-            onChange={this.onChange}
-            multiple
-          />
-          <button type='submit' onClick={this.onSubmit}>
-            Submit
-          </button>
-        </form>
-        <br />
-        <h1>Files list</h1>
-        <FileItemComponent fileslist={this.state.fileslist} />
+        <FileItemComponent
+          fileslistacademic={this.state.fileslistacademic}
+          identityfileslist={this.state.identityfileslist}
+          deleteFile={this.deleteFile}
+          fileName={fileName}
+          onChange={this.onChange}
+          radioValue1={this.state.identityacademicfile[1].value}
+          radioValue2={this.state.identityacademicfile[0].value}
+          onRadioChange={this.onRadioChange}
+          selectedOption={this.state.selectedOption}
+          submitFile={this.onSubmit}
+        />
       </div>
     )
   }
 }
-export default UploadContainer
+export default GlobalContainer

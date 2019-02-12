@@ -3,8 +3,8 @@ import SubmitComponent from "component/submit-component";
 
 const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultstudent,setStudentEdit}) => (
   
-  <table className="table">
-    <thead className="thead-danger">
+  <table className="table table-responsive">
+    <thead className="table">
       <tr>
         <th>Id Number</th>
         <th>Full name</th>

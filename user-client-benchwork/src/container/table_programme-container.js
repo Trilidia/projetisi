@@ -33,7 +33,7 @@ class TableProgrammeContainer extends Component {
 
         return (
             <div className="table-responsive-sm-12">
-                <table className="table table-bordered">
+                <table className="table table-responsive">
                     <thead>
                         <tr>
 
@@ -57,7 +57,7 @@ class TableProgrammeContainer extends Component {
                     <tbody>
                         {
                             this.state.programme.map((value, cle) =>
-                                <tr key={cle}className={(value.isactive == 2) ? '' : 'table-active'}>
+                                <tr key={cle}className={(value.isactive == 1) ? 'table-success' : 'table-danger'}>
 
 
                                     <td >{value.titleprogram}</td>
@@ -67,7 +67,6 @@ class TableProgrammeContainer extends Component {
                                     <td >{value.intershipduration}</td>
                                     <td >{value.level}</td>
                                     <td >{value.price}</td>
-                                    <td >{(value.isactive == 2) ? 'yes' : 'no'}</td>
                                     <td >{value.conditionofaccecptance}</td>
                                     <td >{value.nametraining}</td>
                                     <td >{value.timestartprogram}</td>

@@ -36,9 +36,9 @@ class TableSessionContainer extends Component {
 
         return (
 
-            <div className="table-responsive-sm container">
+            <div className="w-75 container">
 
-                <table className="table table-bordered">
+                <table className="table">
                     <thead>
                         <tr>
 

@@ -8,13 +8,22 @@ class HeaderRecrutContainer extends Component {
 
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-dark mr-auto bg-dark">
+            <div >
+                <nav className="navbar navbar-dark bg-dark avbar-expand-lg mr-auto">
+                    <ul className="nav">
 
-                    <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(0)}>Home</a>
-                    <a className="navbar-brand" href="#" onClick={() => this.props.setidstudent(0, 1)}>New student</a>
-                    <a className="navbar-brand" href="#" onClick={this.props.logout}>Logout</a>
-
+                        <li className="nav-item p-2">
+                            <a className="navbar-brand" href="#" onClick={() => this.props.changePhase(0)}>Home</a>
+                        </li>
+                        <li className="nav-item p-2">
+                            <a className="navbar-brand" href="#" onClick={() => this.props.setidstudent(0, 1)}>New student</a>
+                        </li>
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right ">
+                        <li className="nav-item p-2">
+                            <a className="navbar-brand" href="#" onClick={this.props.logout}>Logout</a>
+                        </li>
+                    </ul>
                 </nav>
             </div >
 
