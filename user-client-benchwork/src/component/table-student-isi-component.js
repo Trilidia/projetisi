@@ -28,7 +28,7 @@ const TableStudentIsiComponent = ({ students, createpdf, writeComment, consultst
             <td className="text-center">{row.nameverdict}</td>
             <td className="text-center">{row.namestatut}</td>
             <td className={(row.isfactured)?"text-success text-center":"text-danger text-center"}>{(row.isfactured)?"yes":"no"}</td>
-            <td className={(row.isfactured)?"text-success text-center":"text-danger text-center"}>{(row.isbillpaid)?"yes":"no"}</td>
+            <td className={(row.isbillpaid)?"text-success text-center":"text-danger text-center"}>{(row.isbillpaid)?"yes":"no"}</td>
             <td className="text-center"><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={()=>consultstudent(row.idstudent)}/></td>
             <td className="text-center"><SubmitComponent type='submit' value='Edit'className="btn btn-outline-success"onClick={()=> setStudentEdit(row.idstudent)}/></td>
             <td className="text-center">{row.statutid != 4 ? <SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger" onClick={()=>createpdf(row)}/> : <SubmitComponent type='submit' value='pdf' className="btn btn-outline-secondary"/>}</td>
