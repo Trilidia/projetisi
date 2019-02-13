@@ -99,7 +99,7 @@ class UploadContainer extends Component {
 
     const { selectedFile, selectedOption, fileName } = this.state
 
-    if (!event.target.checkValidity()||this.state.fileName ==="") {
+    if (this.state.fileName ==="" ||this.state.selectedOption ==="" ) {
       this.setState({ displayErrors: true })
       return;
     }
@@ -119,6 +119,10 @@ class UploadContainer extends Component {
           this.getFilesListAcademic()
           this.getIdentityFilesList()
         })
+
+        this.setState({fileName: ""})
+        this.setState({selectedOption: ""})
+        this.setState({displayErrors: false})
     }
     
 

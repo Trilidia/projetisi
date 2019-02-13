@@ -61,8 +61,6 @@ class AcceuilIsiContainer extends Component {
         })
     }
 
-
-
     componentDidMount() {
         this.getSelectAll()
         this.getAllStatus()
@@ -106,7 +104,10 @@ class AcceuilIsiContainer extends Component {
             verdict: this.state.verdictSearched
         }).then(response => {
             this.setState({ students: response.data })
+            
+
         })
+        this.setState({ btnGetAll:true })
     }
 
     saveChanges(idstudent, verdict, status, isfactured, isbillpaid) {
@@ -368,7 +369,8 @@ class AcceuilIsiContainer extends Component {
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
-                        <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
+                        {this.state.btnGetAll?<button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>:<div></div>}
+                       
                         <form onSubmit={this.handleSubmit}>
 
                             <h2>Search</h2>
