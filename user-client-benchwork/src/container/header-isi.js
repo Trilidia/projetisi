@@ -29,10 +29,8 @@ class HeaderIsiContainer extends Component {
                     </ul>
                     <ul className="nav navbar-nav navbar-right ">
                         <li className="nav-item p-2">
-                        
                             <a className="navbar-brand" href="#" onClick={this.props.logout}><span className="glyphicon glyphicon-user"></span> Logout</a>
                         </li>
-
                     </ul>
                 </nav>
             </div >

@@ -25,8 +25,8 @@ const TableStudentComponent = ({ students,  createpdf, setidstudent }) => (
             <td className="text-center">{row.nameverdict}</td>
             <td className="text-center">{row.namestatut}</td>
             <td className="text-center"><SubmitComponent type='submit' value='Consult' className="btn btn-outline-info" onClick={() => setidstudent(row.idstudent,2)}/></td>
-            <td ><SubmitComponent type='submit' prop1={row.idnumber} value='Edit'className="btn btn-outline-success text-center" onClick={() => setidstudent(row.idstudent,1)}/></td>
-            <td >{row.statutid != 4 ? <SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger text-center" onClick={()=>createpdf(row)}/> : <SubmitComponent type='submit' value='pdf' className="btn btn-outline-secondary"/>}</td>
+            <td className="text-center"><SubmitComponent type='submit' prop1={row.idnumber} value='Edit'className="btn btn-outline-success text-center" onClick={() => setidstudent(row.idstudent,1)}/></td>
+            <td className="text-center">{row.statutid != 4 ? <SubmitComponent type='submit' value='pdf' className="btn btn-outline-danger text-center" onClick={()=>createpdf(row)}/> : <SubmitComponent type='submit' value='pdf' className="btn btn-outline-secondary"/>}</td>
             <td ><SubmitComponent type='submit' value='Comment' className="btn btn-secondary btn-lg text-center"
                 onClick={()=> setidstudent(row.idstudent, 3)} /></td>
           </tr>

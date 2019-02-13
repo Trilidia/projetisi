@@ -26,7 +26,9 @@ class IsiContainer extends Component {
     }
 
     changePhase(nbPhase) {
+        
         this.setState({ phase: nbPhase })
+        this.forceUpdate()
     }
 
     setIdStudentComment(idstudent, nbPahese) {

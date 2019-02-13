@@ -24,7 +24,7 @@ class AcceuilIsiContainer extends Component {
             verdictToEdit: 0,
             isFactured: 0,
             isBillPaid: 0,
-            // phase: 0
+            btnGetAll:false,
 
         }
 
@@ -129,7 +129,7 @@ class AcceuilIsiContainer extends Component {
 
         var today = new Date();
         var dd = today.getDate();
-        var mm = today.getMonth() + 1; //janvier est 0
+        var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
         if (dd < 10) {
             dd = '0' + dd;
@@ -340,7 +340,9 @@ class AcceuilIsiContainer extends Component {
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
+                        <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
                         <form onSubmit={this.handleSubmit}>
+
                             <h2>Search</h2>
                             <InputComponentForm
                                 id="id"
@@ -349,7 +351,6 @@ class AcceuilIsiContainer extends Component {
                                 onChange={this.onChangeId}
                                 classesinput="form-control"
                                 placeholder="Id"
-
                             />
                             <InputComponentForm
                                 id="name"
@@ -383,9 +384,10 @@ class AcceuilIsiContainer extends Component {
                             <br />
                         </form>
                         <br />
-                        <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>
+                        
                     </div>
                     <div className="col-md-10 mb-10">
+
                         <TableStudentIsiComponent
                             students={this.state.students}
                             verdict={this.state.verdict}

@@ -10,6 +10,7 @@ class UploadContainer extends Component {
       selectedFile: '',
       fileName: '',
       uploadStatus: '',
+      displayErrors: false,
       fileslistacademic: [],
       identityfileslist: [],
       selectedOption: '',
@@ -90,34 +91,51 @@ class UploadContainer extends Component {
   }
 
   onSubmit() {
-    console.log("ppppppppppp" + this.props.infoStudent) //eslint-disable-line
+
     let studentid = this.props.infoStudent
-    console.log(studentid)//eslint-disable-line
+
     const FormData = require('form-data')
     let form = new FormData()
 
     const { selectedFile, selectedOption, fileName } = this.state
-    form.append('selectedOption', selectedOption)
-    form.append('selectedFile', selectedFile)
-    form.append('fileName', fileName)
-    form.append('studentid', studentid)
-    axios.post('/', form)
 
+    if (!event.target.checkValidity()||this.state.fileName ==="") {
+      this.setState({ displayErrors: true })
+      return;
+    }
+    else if(this.state.selectedFile===""){
+      this.setState({uploadStatus : "No file selected"})
+      return;
+    }
+    else{
+      form.append('selectedOption', selectedOption)
+      form.append('selectedFile', selectedFile)
+      form.append('fileName', fileName)
+      form.append('studentid', studentid)
+      axios.post('/', form)
       .then(response => {
-        console.log("retour de la requete upload serveur" + response.data) //eslint-disable-line
-        this.setState({ uploadStatus: response.data })
-        this.getFilesListAcademic()
-        this.getIdentityFilesList()
-      })
+          console.log("retour de la requete upload serveur" + response.data) //eslint-disable-line
+          this.setState({ uploadStatus: response.data })
+          this.getFilesListAcademic()
+          this.getIdentityFilesList()
+        })
+    }
+    
 
 
   }
   render() {
     const { fileName } = this.state
-    console.log("TEST VALUE IDSTUDENT" + this.props.infoStudent) //eslint-disable-line
+    const { displayErrors } = this.state;
     return (
-      <div>
-        {this.state.uploadStatus}
+      <div className="border border-danger">
+        <div className="row justify-content-center">
+          <h3 className="text-danger">Add Files</h3>
+        </div>
+        <div className="alert alert-secondary" role="alert">
+          {this.state.uploadStatus}
+        </div>
+
         <FileItemComponent
           fileslistacademic={this.state.fileslistacademic}
           identityfileslist={this.state.identityfileslist}
@@ -130,6 +148,7 @@ class UploadContainer extends Component {
           selectedOption={this.state.selectedOption}
           submitFile={this.onSubmit}
           idstudent={this.props.infoStudent}
+          displayErrors={this.state.displayErrors}
         />
       </div>
     )
