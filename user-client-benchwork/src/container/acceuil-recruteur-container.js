@@ -28,6 +28,18 @@ class AcceuilRecruteurContainer extends Component {
         this.getSelectAll = this.getSelectAll.bind(this);
 
     }
+
+    componentDidMount() {
+        this.getSelectAll()
+        this.getAllStatus()
+        this.getAllVerdict()
+    }
+
+    componentWillMount() {
+        this.getSelectAll()
+
+    }
+
     getSelectAll() {
         APIService.get('getstudent').then(response => {
             this.setState({ students: response.data })
@@ -43,16 +55,6 @@ class AcceuilRecruteurContainer extends Component {
         APIService.get('getallverdict').then(response => {
             this.setState({ verdict: response.data })
         })
-    }
-    componentDidMount() {
-        this.getSelectAll()
-        this.getAllStatus()
-        this.getAllVerdict()
-    }
-    componentWillMount(){
-        this.getSelectAll()
-        this.getAllStatus()
-        this.getAllVerdict()
     }
 
     onChangeId(event) {
@@ -116,16 +118,20 @@ class AcceuilRecruteurContainer extends Component {
         /***********************/
         /*personnal information*/
         /***********************/
-        if (studentSelect.lastname.length > 24) {
+        if (studentSelect.lastname.length > 25) {
             doc.setFontSize(8);
             doc.text(24, 66, studentSelect.lastname);
+        } else {
+            doc.text(24, 66, studentSelect.lastname);
         }
-        doc.text(24, 66, studentSelect.lastname);
-        if (studentSelect.firstname.length > 24) {
+        doc.setFontSize(10);
+        if (studentSelect.firstname.length > 25) {
             doc.setFontSize(8);
             doc.text(106, 66, studentSelect.firstname);
+        } else {
+            doc.text(106, 66, studentSelect.firstname);
         }
-        doc.text(106, 66, studentSelect.firstname);
+        doc.setFontSize(10);
         doc.text(24, 76, studentSelect.birthday);
         if (studentSelect.hasCAQorMIDI === 0) {
             doc.text(49.1, 84.6, "x");
@@ -139,31 +145,41 @@ class AcceuilRecruteurContainer extends Component {
         if (studentSelect.apt != null) {
             doc.text(69, 99, studentSelect.apt);
         }
+        doc.setFontSize(10);
         doc.text(106, 99, studentSelect.streetno);
-        if (studentSelect.streetname.length > 16) {
-            doc.setFontSize(6);
+        if (studentSelect.streetname.length > 16 && studentSelect.streetname.length <= 20) {
+            doc.setFontSize(8);
             doc.text(152, 99, studentSelect.streetname);
         } else if (studentSelect.streetname.length > 20) {
-            doc.setFontSize(4);
+            doc.setFontSize(6);
+            doc.text(152, 99, studentSelect.streetname);
+        } else {
+            doc.setFontSize(10);
             doc.text(152, 99, studentSelect.streetname);
         }
-        doc.text(152, 99, studentSelect.streetname);
+        doc.setFontSize(10);
         if (studentSelect.city.length > 18) {
             doc.setFontSize(8);
             doc.text(24, 108, studentSelect.city);
         } else if (studentSelect.city > 25) {
             doc.setFontSize(6);
             doc.text(24, 108, studentSelect.city);
+        } else {
+            doc.setFontSize(10);
+            doc.text(24, 108, studentSelect.city);
         }
-        doc.text(24, 108, studentSelect.city);
+        doc.setFontSize(10);
         if (studentSelect.country.length > 14) {
             doc.setFontSize(8);
             doc.text(69, 108, studentSelect.country);
         } else if (studentSelect.country > 18) {
             doc.setFontSize(6);
             doc.text(69, 108, studentSelect.country);
+        } else {
+            doc.setFontSize(10);
+            doc.text(69, 108, studentSelect.country);
         }
-        doc.text(69, 108, studentSelect.country);
+        doc.setFontSize(10);
         doc.text(106, 108, studentSelect.province);
         doc.text(152, 108, studentSelect.postalcode);
 
@@ -181,8 +197,11 @@ class AcceuilRecruteurContainer extends Component {
         } else if (properties.insitutionalInfo[0].city > 25) {
             doc.setFontSize(6);
             doc.text(24, 146, properties.insitutionalInfo[0].city);
+        } else {
+            doc.setFontSize(10);
+            doc.text(24, 146, properties.insitutionalInfo[0].city);
         }
-        doc.text(24, 146, properties.insitutionalInfo[0].city);
+        doc.setFontSize(10);
         doc.text(69, 146, properties.insitutionalInfo[0].province);
         doc.text(106, 146, properties.insitutionalInfo[0].postalcode);
         doc.text(24, 156.5, properties.insitutionalInfo[0].phone);
@@ -195,16 +214,22 @@ class AcceuilRecruteurContainer extends Component {
         } else if (properties.insitutionalInfo[0].email.length > 30) {
             doc.setFontSize(6);
             doc.text(106, 166, properties.insitutionalInfo[0].email);
+        } else {
+            doc.setFontSize(10);
+            doc.text(106, 166, properties.insitutionalInfo[0].email);
         }
-        doc.text(106, 166, properties.insitutionalInfo[0].email);
+        doc.setFontSize(10);
         if (properties.insitutionalInfo[0].nameprimarycontact.length > 20) {
             doc.setFontSize(8);
             doc.text(24, 176.5, properties.insitutionalInfo[0].nameprimarycontact);
         } else if (properties.insitutionalInfo[0].nameprimarycontact > 25) {
             doc.setFontSize(6);
             doc.text(24, 176.5, properties.insitutionalInfo[0].nameprimarycontact);
+        } else {
+            doc.setFontSize(10);
+            doc.text(24, 176.5, properties.insitutionalInfo[0].nameprimarycontact);
         }
-        doc.text(24, 176.5, properties.insitutionalInfo[0].nameprimarycontact);
+        doc.setFontSize(10);
         doc.text(69, 176.5, properties.insitutionalInfo[0].positionprimarycontact);
         doc.setFontSize(8);
         doc.text(107, 175.15, properties.insitutionalInfo[0].telprimarycontact);
@@ -216,8 +241,11 @@ class AcceuilRecruteurContainer extends Component {
         } else if (properties.insitutionalInfo[0].namesecondarycontact > 25) {
             doc.setFontSize(6);
             doc.text(24, 186.5, properties.insitutionalInfo[0].namesecondarycontact);
+        } else {
+            doc.setFontSize(10);
+            doc.text(24, 186.5, properties.insitutionalInfo[0].namesecondarycontact);
         }
-        doc.text(24, 186.5, properties.insitutionalInfo[0].namesecondarycontact);
+        doc.setFontSize(10);
         doc.text(69, 186.5, properties.insitutionalInfo[0].positionsecondarycontact);
         doc.setFontSize(8);
         doc.text(107, 185.15, properties.insitutionalInfo[0].telsecondarycontact);
@@ -250,15 +278,17 @@ class AcceuilRecruteurContainer extends Component {
         doc.setFontSize(10);
         if (studentSelect.isexchangestudent === 1) {
             doc.text(30.6, 217.8, "x");
-        } else if (studentSelect.isexchangestudent === 2) {
+        } else if (studentSelect.isexchangestudent === 0) {
             doc.text(46.4, 217.8, "x");
         }
+        doc.setFontSize(10);
         doc.text(117, 218.5, studentSelect.price);
         if (studentSelect.isfeesprepaid === 1) {
             doc.text(162.6, 217.75, "x");
         } else if (studentSelect.isfeesprepaid === 0) {
             doc.text(171.8, 217.75, "x");
         }
+        doc.setFontSize(10);
         doc.text(24, 231, studentSelect.totalduration);
         if (studentSelect.hasintership === 1) {
             doc.text(111.5, 227.2, "x");
@@ -321,7 +351,7 @@ class AcceuilRecruteurContainer extends Component {
                                 placeholder="Id"
 
                             />
-                           
+
 
                             <InputComponentForm
                                 id="name"
