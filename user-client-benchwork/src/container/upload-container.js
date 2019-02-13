@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import axios from '../service/api-service'
 import FileItemComponent from '../component/filelist-component'
@@ -81,10 +82,11 @@ class UploadContainer extends Component {
         fileURL: fileName
       })
       .then(response => {
+        this.getFilesListAcademic()
+        this.getIdentityFilesList()
         this.setState({ uploadStatus: response.data })
       })
-    this.getFilesListAcademic()
-    this.getIdentityFilesList()
+
   }
 
   onSubmit() {

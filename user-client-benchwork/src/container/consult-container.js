@@ -36,12 +36,8 @@ class ConsultContainer extends Component {
         return (
 
             <div className='container'>
-
-
                 {(this.state.infoStudent) == 0 ? null : <InfoStudentComponent infoStudent={this.state.infoStudent} />}
                 {(this.state.infoStudent) == 0 ? null : <UploadContainer infoStudent={this.state.infoStudent[0].idstudent} />}
-
-
             </div>
 
         )
