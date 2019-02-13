@@ -308,18 +308,18 @@ class FormProgrammeContainer extends Component {
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        {this.returnInput("Price of program :", "text", "price", this.state.programme[0].price, "", this.onchangePrice, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Tuitions fees :", "text", "price", this.state.programme[0].price, "", this.onchangePrice, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        {this.returnInput("Condition of acceptance :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Admission requirements :", "text", "conditition", this.state.programme[0].conditionofaccecptance, "", this.onchangeconditionofaccecptance, ".*", "col-md-4", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
-                        {this.returnInput("Time start program :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                        {this.returnInput("Start date :", "text", "datestartprogram", this.state.programme[0].timestartprogram, "YYYY/MM/DD", this.onchangetimestartprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        {this.returnInput("Time end program :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
+                        {this.returnInput("Completion date :", "text", "dateendprogram", this.state.programme[0].timeendprogram, "YYYY/MM/DD", this.onchangetimeendprogram, "\\d{4}\\/\\d{2}/\\d{2}", "col-md-4", "form-control", "Invalide format, YYYY/MM/DD", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
                         <div className="form-group row">

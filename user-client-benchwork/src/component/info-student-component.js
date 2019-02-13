@@ -42,9 +42,11 @@ const InfoStudentComponent = ({ infoStudent }) => (
           <p><b className="text-secondary">Program:</b> {infoStudent[0].titleprogram}</p>
           <p><b className="text-secondary">Sigle:</b> {infoStudent[0].sigle}</p>
           <p><b className="text-secondary">Duration:</b> {infoStudent[0].totalduration}</p>
+          <p><b className="text-secondary">Start date:</b> {infoStudent[0].timestartprogram}</p>
+          <p><b className="text-secondary">Completion date:</b> {infoStudent[0].timeendprogram}</p>
           <p><b className="text-secondary">level:</b> {infoStudent[0].level} </p>
           <p><b className="text-secondary">Tuitions fees:</b> {infoStudent[0].price} $</p>
-          <p><b className="text-secondary">Exchange program:</b> {infoStudent[0].hasintership} month</p>
+          <p><b className="text-secondary">Has intership:</b> {infoStudent[0].hasintership} month</p>
           <p><b className="text-secondary">Admission requirements:</b> {infoStudent[0].conditionofacceptance} </p>
         </div>
       </fieldset>

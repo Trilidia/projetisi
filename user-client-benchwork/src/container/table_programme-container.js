@@ -22,8 +22,8 @@ class TableProgrammeContainer extends Component {
     componentDidMount() {
         this.getAllProgramme()
     }
-    componentWillMount(){
-          this.getAllProgramme()
+    componentWillMount() {
+        this.getAllProgramme()
     }
 
     changeisclickedit(id) {
@@ -36,43 +36,40 @@ class TableProgrammeContainer extends Component {
                 <table className="table table-responsive">
                     <thead>
                         <tr>
-
-                            <th scope="col">Title program</th>
-                            <th scope="col">Sigle</th>
-                            <th scope="col">Total duration</th>
-                            <th scope="col">Has intership</th>
-                            <th scope="col">Intership duration</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Tuitions fees</th>
-                            <th scope="col">Is active</th>
-                            <th scope="col">Condition of acceptance</th>
-                            <th scope="col">Type of training</th>
-                            <th scope="col">Time start program</th>
-                            <th scope="col">Time end program</th>
-                            <th scope="col">Academic status</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col" className="text-center">Sigle</th>
+                            <th scope="col" className="text-center">Title program</th>
+                            <th scope="col" className="text-center">Total duration</th>
+                            <th scope="col" className="text-center">Has intership</th>
+                            <th scope="col" className="text-center">Intership duration</th>
+                            <th scope="col" className="text-center">Level</th>
+                            <th scope="col" className="text-center">Tuitions fees</th>
+                            <th scope="col" className="text-center">Admission requirements</th>
+                            <th scope="col" className="text-center">Type of training</th>
+                            <th scope="col" className="text-center">Start date</th>
+                            <th scope="col" className="text-center">Completion date</th>
+                            <th scope="col" className="text-center">Academic status</th>
+                            <th scope="col" className="text-center">Edit</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         {
                             this.state.programme.map((value, cle) =>
-                                <tr key={cle}className={(value.isactive == 1) ? 'table-success' : 'table-danger'}>
+                                <tr key={cle} className={(value.isactive == 1) ? 'table' : 'table-active'}>
 
-
-                                    <td >{value.titleprogram}</td>
-                                    <td >{value.sigle}</td>
-                                    <td >{value.totalduration}</td>
-                                    <td >{(value.hasintership == 2) ? 'yes' : 'no'}</td>
-                                    <td >{value.intershipduration}</td>
-                                    <td >{value.level}</td>
-                                    <td >{value.price}</td>
-                                    <td >{value.conditionofaccecptance}</td>
-                                    <td >{value.nametraining}</td>
-                                    <td >{value.timestartprogram}</td>
-                                    <td >{value.timeendprogram}</td>
-                                    <td >{value.nameacademicstatus}</td>
-                                    <td><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-outline-warning">Edit</button></td>
+                                    <td className="text-center">{value.sigle}</td>
+                                    <td className="text-center">{value.titleprogram}</td>
+                                    <td className="text-center">{value.totalduration}</td>
+                                    <td className="text-center" >{(value.hasintership == 1) ? 'yes' : 'no'}</td>
+                                    <td className="text-center">{value.intershipduration}</td>
+                                    <td className="text-center">{value.level}</td>
+                                    <td className="text-center">{value.price}</td>
+                                    <td className="text-center">{value.conditionofaccecptance}</td>
+                                    <td className="text-center">{value.nametraining}</td>
+                                    <td className="text-center">{value.timestartprogram}</td>
+                                    <td className="text-center">{value.timeendprogram}</td>
+                                    <td className="text-center">{value.nameacademicstatus}</td>
+                                    <td className="align-middle"><button onClick={() => this.changeisclickedit(value.idprogram)} className="btn btn-outline-warning">Edit</button></td>
 
                                 </tr>
                             )

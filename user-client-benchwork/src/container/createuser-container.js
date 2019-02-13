@@ -7,7 +7,7 @@ class CreateUserContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isAdmin: [{ value: 0, label: "Recruteur" }, { value: 1, label: "Admin" }],
+            isAdmin: [{ value: 0, label: "Recruiter" }, { value: 1, label: "Admin" }],
             user: [{
                 username: "",
                 password: "",
@@ -156,7 +156,7 @@ class CreateUserContainer extends Component {
                     </div>
                     <div className="form-group row justify-content-center">
 
-                        <button className="btn btn-primary btn-lg" >Create</button>
+                        <button className="btn btn-danger btn-lg" >Create</button>
 
                     </div>
                 </div>
