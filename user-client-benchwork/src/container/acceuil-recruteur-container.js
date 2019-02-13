@@ -28,6 +28,16 @@ class AcceuilRecruteurContainer extends Component {
         this.getSelectAll = this.getSelectAll.bind(this);
 
     }
+
+    componentDidMount() {
+        this.getSelectAll()
+    }
+
+    componentWillMount() {
+        this.getSelectAll()
+
+    }
+
     getSelectAll() {
         APIService.get('getstudent').then(response => {
             this.setState({ students: response.data })
@@ -43,16 +53,6 @@ class AcceuilRecruteurContainer extends Component {
         APIService.get('getallverdict').then(response => {
             this.setState({ verdict: response.data })
         })
-    }
-    componentDidMount() {
-        this.getSelectAll()
-        this.getAllStatus()
-        this.getAllVerdict()
-    }
-    componentWillMount() {
-        this.getSelectAll()
-        this.getAllStatus()
-        this.getAllVerdict()
     }
 
     onChangeId(event) {
