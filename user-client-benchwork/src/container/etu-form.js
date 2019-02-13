@@ -3,6 +3,7 @@ import APIService from "service/api-service";
 import InputComponentForm from "component/inputform-component";
 import SelectFormComponent from "component/selectform-component";
 import RadioFormComponent from "component/radioform-component";
+import ButtonSubmitComponent from "component/button-submit-component";
 
 class EtuformContainer extends Component {
     constructor(props) {
@@ -473,8 +474,7 @@ class EtuformContainer extends Component {
                     <div className="form-group row">
 
                         <button onClick={this.turnOnValidation} className="btn btn-success" >Save and submit</button>
-
-                        <button onClick={this.turnOffValidation} className="btn btn-danger" >Save without submitting</button>
+                        <ButtonSubmitComponent text='Save without submitting' className="btn btn-danger" onClick={(e) => { if (window.confirm("If you don't submit, you won't be able to download the letter of acceptance")) this.turnOffValidation(e) }} />
 
                     </div>
                 </div>
