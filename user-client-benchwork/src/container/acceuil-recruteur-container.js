@@ -116,18 +116,18 @@ class AcceuilRecruteurContainer extends Component {
         /***********************/
         /*personnal information*/
         /***********************/
-        if (studentSelect.lastname.length > 24) {
+        if (studentSelect.lastname.length > 25) {
             doc.setFontSize(8);
-            doc.text(24, 66, studentSelect.lastname);
+            doc.text(24, 66, this.capitalizeFirstLetter(studentSelect.lastname));
         } else {
-            doc.text(24, 66, studentSelect.lastname);
+            doc.text(24, 66, this.capitalizeFirstLetter(studentSelect.lastname));
         }
         doc.setFontSize(10);
-        if (studentSelect.firstname.length > 24) {
+        if (studentSelect.firstname.length > 25) {
             doc.setFontSize(8);
-            doc.text(106, 66, studentSelect.firstname);
+            doc.text(106, 66, this.capitalizeFirstLetter(studentSelect.firstname));
         } else {
-            doc.text(106, 66, studentSelect.firstname);
+            doc.text(106, 66, this.capitalizeFirstLetter(studentSelect.firstname));
         }
         doc.setFontSize(10);
         doc.text(24, 76, studentSelect.birthday);
