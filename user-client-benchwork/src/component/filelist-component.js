@@ -50,7 +50,7 @@ const FileItemComponent = ({
             <tr key={index}>
               <td>
                 <a
-                  href={`http://localhost:8090/downloads?test=${row.filename}`}
+                  href={`http://192.168.0.41:8090/downloads?test=${row.filename}`}
                   download
                 >
                   {row.filenameshowedtouser}.{row.extensionfile}
@@ -77,7 +77,7 @@ const FileItemComponent = ({
             <tr key={index}>
               <td>
                 <a
-                  href={`http://localhost:8090/downloads?test=${row.filename}`}
+                  href={`http://192.168.0.41:8090/downloads?test=${row.filename}`}
                   download
                 >
                   {row.filenameshowedtouser}.{row.extensionfile}
