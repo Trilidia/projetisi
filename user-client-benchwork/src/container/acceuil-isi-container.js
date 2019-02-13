@@ -48,6 +48,7 @@ class AcceuilIsiContainer extends Component {
         APIService.get('getstudent').then(response => {
             this.setState({ students: response.data })
         })
+        this.setState({ btnGetAll: false })
     }
 
     getAllStatus() {
