@@ -32,13 +32,13 @@ class ConsultRecrutContainer extends Component {
 
 
     render() {
-
+        console.log(this.state.infoStudent) // eslint-disable-line
 
         return (
             <div className='container'>
 
                 {(this.state.infoStudent) == 0 ? null : <InfoStudentComponent infoStudent={this.state.infoStudent} />}
-                <UploadContainer />
+                {(this.state.infoStudent) == 0 ? null : <UploadContainer infoStudent={this.state.infoStudent[0].idstudent} />}
             </div>
 
         )

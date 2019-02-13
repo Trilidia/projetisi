@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import axios from '../service/api-service'
 import FileItemComponent from '../component/filelist-component'
 
-class GlobalContainer extends Component {
-  constructor () {
+class UploadContainer extends Component {
+  constructor() {
     super()
     this.state = {
       selectedFile: '',
@@ -12,6 +12,8 @@ class GlobalContainer extends Component {
       fileslistacademic: [],
       identityfileslist: [],
       selectedOption: '',
+      idstudent: '',
+      studentid: '',
       identityacademicfile: [
         { value: 0, label: 'Identity file' },
         { value: 1, label: 'Academic file' }
@@ -26,33 +28,36 @@ class GlobalContainer extends Component {
     this.onRadioChange = this.onRadioChange.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log('PD didmount') //eslint-disable-line
     this.getFilesListAcademic()
     this.getIdentityFilesList()
+    this.forceUpdate()
   }
 
-  onRadioChange (e) {
+  onRadioChange(e) {
     this.setState({
       selectedOption: e.currentTarget.value
     })
   }
-  getFilesListAcademic () {
+  getFilesListAcademic() {
+    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/academicfiles', {
         params: {
-          studentid: 9
+          studentid: this.props.infoStudent
         }
       })
       .then(response => {
         this.setState({ fileslistacademic: response.data })
       })
   }
-  getIdentityFilesList () {
+  getIdentityFilesList() {
+    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/identityfiles', {
         params: {
-          studentid: 9
+          studentid: this.props.infoStudent
         }
       })
       .then(response => {
@@ -60,7 +65,7 @@ class GlobalContainer extends Component {
       })
   }
 
-  onChange (e) {
+  onChange(e) {
     switch (e.target.name) {
       case 'selectedFile':
         this.setState({ selectedFile: e.target.files[0] })
@@ -69,8 +74,8 @@ class GlobalContainer extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
   }
-  deleteFile (fileName) {
-    console.log('enter1 ' + fileName) //eslint-disable-line
+  deleteFile(fileName) {
+    // console.log('enter1 ' + fileName) //eslint-disable-line
     axios
       .post('deletes', {
         fileURL: fileName
@@ -81,23 +86,36 @@ class GlobalContainer extends Component {
     this.getFilesListAcademic()
     this.getIdentityFilesList()
   }
-  onSubmit () {
+
+  onSubmit() {
+    console.log("ppppppppppp" + this.props.infoStudent) //eslint-disable-line
+    let studentid = this.props.infoStudent
+    console.log(studentid)//eslint-disable-line
     const FormData = require('form-data')
-    var form = new FormData()
+    let form = new FormData()
+
     const { selectedFile, selectedOption, fileName } = this.state
     form.append('selectedOption', selectedOption)
     form.append('selectedFile', selectedFile)
     form.append('fileName', fileName)
-    axios.post('/', form).then(response => {
-      this.setState({ uploadStatus: response.data })
-    })
-    this.getFilesListAcademic()
-    this.getIdentityFilesList()
+    form.append('studentid', studentid)
+    axios.post('/', form)
+
+      .then(response => {
+        console.log("retour de la requete upload serveur" + response.data) //eslint-disable-line
+        this.setState({ uploadStatus: response.data })
+        this.getFilesListAcademic()
+        this.getIdentityFilesList()
+      })
+
+
   }
-  render () {
+  render() {
     const { fileName } = this.state
+    console.log("TEST VALUE IDSTUDENT" + this.props.infoStudent) //eslint-disable-line
     return (
       <div>
+        {this.state.uploadStatus}
         <FileItemComponent
           fileslistacademic={this.state.fileslistacademic}
           identityfileslist={this.state.identityfileslist}
@@ -109,9 +127,10 @@ class GlobalContainer extends Component {
           onRadioChange={this.onRadioChange}
           selectedOption={this.state.selectedOption}
           submitFile={this.onSubmit}
+          idstudent={this.props.infoStudent}
         />
       </div>
     )
   }
 }
-export default GlobalContainer
+export default UploadContainer
