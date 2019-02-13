@@ -31,6 +31,8 @@ class AcceuilRecruteurContainer extends Component {
 
     componentDidMount() {
         this.getSelectAll()
+        this.getAllStatus()
+        this.getAllVerdict()
     }
 
     componentWillMount() {

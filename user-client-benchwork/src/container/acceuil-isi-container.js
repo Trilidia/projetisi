@@ -65,6 +65,8 @@ class AcceuilIsiContainer extends Component {
 
     componentDidMount() {
         this.getSelectAll()
+        this.getAllStatus()
+        this.getAllVerdict()
     }
     componentWillMount() {
         this.getSelectAll()
