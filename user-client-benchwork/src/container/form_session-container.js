@@ -46,6 +46,7 @@ class FormSessionContainer extends Component {
             yearsession: this.state.session[0].yearsession,
 
         })
+        this.props.getAllSessioon()
     }
 
 
@@ -58,6 +59,7 @@ class FormSessionContainer extends Component {
             yearsession: this.state.session[0].yearsession,
 
         })
+        this.props.getAllSessioon()
 
     }
     checkedSubmitOrUpdate() {
@@ -77,7 +79,7 @@ class FormSessionContainer extends Component {
             else {
                 this.addSession()
                 this.setState({
-                    ispdate : true
+                    ispdate: true
                 })
             }
         }

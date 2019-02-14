@@ -69,7 +69,7 @@ class GlobalSessionContainer extends Component {
                     <br />
                     <br />
 
-                    {this.state.showFormIsClick ? <FormSessionContainer changeisclickedit={this.changeisclickedit} idsession={this.state.idsession} /> : <TableSessionContainer changeisclickedit={this.changeisclickedit} />}
+                    {this.state.showFormIsClick ? <FormSessionContainer getAllSessioon={this.getAllSessioon} changeisclickedit={this.changeisclickedit} idsession={this.state.idsession} /> : <TableSessionContainer changeisclickedit={this.changeisclickedit} />}
                 </div>
             </div >
         );
