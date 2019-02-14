@@ -41,7 +41,8 @@ class EtuformContainer extends Component {
             zero: 0,
             enableValidation: true,
             displayErrors: false,
-            retourIDNumber: false
+            retourIDNumber: false,
+            forceRender: false
 
         }
         this.changeStreetNo = this.changeStreetNo.bind(this);
@@ -147,19 +148,15 @@ class EtuformContainer extends Component {
                 return;
             } else if (idstudent == 0) {
                 this.createStudent();
-                this.props.goBackHome()
             } else if (idstudent != 0) {
                 this.updateStudent();
-                this.props.goBackHome()
             }
 
         } else {
             if (idstudent == 0) {
                 this.createStudent();
-                this.props.goBackHome()
             } else if (idstudent != 0) {
                 this.updateStudent();
-                this.props.goBackHome()
             }
         }
 
@@ -190,6 +187,9 @@ class EtuformContainer extends Component {
             isbillpaid: this.state.student[0].isbillpaid,
             email: this.state.student[0].email,
             telephone: this.state.student[0].telephone
+        }).then(response => {
+            this.setState({ forceRender: response.data })
+            this.props.goBackHome();
         })
     }
     updateStudent() {
@@ -218,6 +218,9 @@ class EtuformContainer extends Component {
             isbillpaid: this.state.student[0].isbillpaid,
             email: this.state.student[0].email,
             telephone: this.state.student[0].telephone
+        }).then(response => {
+            this.setState({ forceRender: response.data })
+            this.props.goBackHome();
         })
     }
 

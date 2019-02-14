@@ -48,7 +48,8 @@ class EtuformIsiContainer extends Component {
             enableValidation: true,
             displayErrors: false,
             retourIDNumber: false,
-            updateInfoFor: ''
+            updateInfoFor: '',
+            forceRender: false
 
         }
         this.changeStreetNo = this.changeStreetNo.bind(this);
@@ -128,11 +129,11 @@ class EtuformIsiContainer extends Component {
         if (this.state.updateInfoFor === PERSONAL) {
             console.log(PERSONAL) //eslint-disable-line
             this.updateStudentPersonnal();
-            this.props.setBackToHome();
+
         } else if (this.state.updateInfoFor === ADMINISTRATION) {
             console.log(ADMINISTRATION) //eslint-disable-line
             this.updateStudentAdministrative();
-            this.props.setBackToHome();
+
         }
 
     }
@@ -159,7 +160,11 @@ class EtuformIsiContainer extends Component {
             pobox: this.state.student[0].pobox,
             email: this.state.student[0].email,
             telephone: this.state.student[0].telephone
+        }).then(response => {
+            this.setState({ forceRender: response.data })
+            this.props.setBackToHome();
         })
+
     }
 
     updateStudentAdministrative() {
@@ -169,7 +174,11 @@ class EtuformIsiContainer extends Component {
             statutid: this.state.student[0].statutid,
             isfactured: this.state.student[0].isfactured,
             isbillpaid: this.state.student[0].isbillpaid,
+        }).then(response => {
+            this.setState({ forceRender: response.data })
+            this.props.setBackToHome();
         })
+
     }
 
     generatedIdNumber() {
