@@ -13,6 +13,7 @@ class CommentRecrutContainer extends Component {
             textmsg: "",
             studentid: 0,
             displayErrors: false,
+            addComment: false
         }
 
         this.onChangeTextarea = this.onChangeTextarea.bind(this);
@@ -56,10 +57,13 @@ class CommentRecrutContainer extends Component {
                 nameuser: this.state.nameUser,
                 text: this.state.textmsg,
                 studentid: this.state.studentid
+            }).then(response => {
+                this.setState({ addComment: response.data });
+                this.getAllCommentByStudentId(this.state.studentid);
+                this.setState({ textmsg: "" });
+                this.setState({ displayErrors: false })
             })
-            this.getAllCommentByStudentId(this.state.studentid);
-            this.setState({ textmsg: "" });
-            this.setState({ displayErrors: false })
+
         }
         this.getAllCommentByStudentId(this.state.studentid);
     }

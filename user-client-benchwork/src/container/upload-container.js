@@ -31,7 +31,7 @@ class UploadContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('PD didmount') //eslint-disable-line
+
     this.getFilesListAcademic()
     this.getIdentityFilesList()
     this.forceUpdate()
@@ -43,7 +43,6 @@ class UploadContainer extends Component {
     })
   }
   getFilesListAcademic() {
-    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/academicfiles', {
         params: {
@@ -55,7 +54,6 @@ class UploadContainer extends Component {
       })
   }
   getIdentityFilesList() {
-    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/identityfiles', {
         params: {
@@ -77,7 +75,6 @@ class UploadContainer extends Component {
     }
   }
   deleteFile(fileName) {
-    // console.log('enter1 ' + fileName) //eslint-disable-line
     axios
       .post('deletes', {
         fileURL: fileName
@@ -91,7 +88,6 @@ class UploadContainer extends Component {
   }
 
   onSubmit() {
-    console.log("RENTRE DEDANS");//eslint-disable-line
     let studentid = this.props.infoStudent
 
     const FormData = require('form-data')
@@ -99,25 +95,20 @@ class UploadContainer extends Component {
 
     const { selectedFile, selectedOption } = this.state
 
-    console.log("fileName" + this.state.fileName, "selectedOption" + this.state.selectedOption);//eslint-disable-line
     if (this.state.selectedOption === "") {
       this.setState({ displayErrors: true })
-      console.log("IF");//eslint-disable-line
       return;
     }
     else if (this.state.selectedFile === "") {
       this.setState({ uploadStatus: "No file selected" })
-      console.log("ELSE IF");//eslint-disable-line
       return;
     }
     else {
-      console.log("ELSE");//eslint-disable-line
       form.append('selectedOption', selectedOption)
       form.append('selectedFile', selectedFile)
       form.append('studentid', studentid)
       axios.post('/', form)
         .then(response => {
-          console.log("retour de la requete upload serveur" + response.data) //eslint-disable-line
           this.setState({ uploadStatus: response.data })
           this.getFilesListAcademic()
           this.getIdentityFilesList()
