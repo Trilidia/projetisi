@@ -25,5 +25,7 @@ export const properties = {
     //pour la date d expiration du LOA.
     // janvier = 0
     // +7 = 6 mois
-    monthsToAdd : 7,
+    monthsToAdd: 7,
+    //adress ip pour etablir connexion au serveur SQL
+    axiosBaseURL: "http://192.168.0.41:8090",
 };
