@@ -81,8 +81,6 @@ class CommentContainer extends Component {
                 <div className="container">
 
                     <form className={this.state.displayErrors ? 'was-validated' : ""} noValidate>
-                        <h2>{this.state.nameUser}</h2>
-
 
                         <TextareaComponent
                             id="message"

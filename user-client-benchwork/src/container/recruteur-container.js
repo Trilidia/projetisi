@@ -72,7 +72,6 @@ class RecruteurContainer extends Component {
                 <div>
                     <div>
                         <HeaderRecrutContainer changePhase={this.changePhase} logout={this.props.logout} />
-                        <h4>hello {this.state.username}</h4>
                     </div>
                     <div>
                         <ConsultRecrutContainer changePhase={this.changePhase} idstudent={this.state.idstudent} />
