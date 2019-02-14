@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { properties } from '../../properties';
 
 const FileItemComponent = ({
   fileslistacademic,
@@ -53,7 +54,7 @@ const FileItemComponent = ({
               <tr key={index}>
                 <td>
                   <a
-                    href={`http://192.168.0.41:8090/downloads?test=${row.filename}`}
+                    href={`` + properties.axiosBaseURL + `/downloads?test=${row.filename}`}
                     download
                   >
                     {row.filename}.{row.extensionfile}
@@ -77,7 +78,7 @@ const FileItemComponent = ({
               <tr key={index}>
                 <td>
                   <a
-                    href={`http://192.168.0.41:8090/downloads?test=${row.filename}`}
+                    href={`` + properties.axiosBaseURL + `/downloads?test=${row.filename}`}
                     download
                   >
                     {row.filename}.{row.extensionfile}

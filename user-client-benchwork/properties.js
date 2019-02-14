@@ -27,5 +27,5 @@ export const properties = {
     // +7 = 6 mois
     monthsToAdd: 7,
     //adress ip pour etablir connexion au serveur SQL
-    axiosBaseURL: "http://192.168.0.41:8090",
+    axiosBaseURL: "https://isi-projet.com:8089",
 };
