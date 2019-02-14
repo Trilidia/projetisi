@@ -24,7 +24,7 @@ class AcceuilIsiContainer extends Component {
             verdictToEdit: 0,
             isFactured: 0,
             isBillPaid: 0,
-            btnGetAll:false,
+            btnGetAll: false,
 
         }
 
@@ -39,10 +39,7 @@ class AcceuilIsiContainer extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    /*changePhaseToSession() {
-        console.log("CHANGE STATE SESSION") // eslint-disable-line
-        this.setState({ phase: 1 })
-    }*/
+
 
     getSelectAll() {
         APIService.get('getstudent').then(response => {
@@ -105,10 +102,10 @@ class AcceuilIsiContainer extends Component {
             verdict: this.state.verdictSearched
         }).then(response => {
             this.setState({ students: response.data })
-            
+
 
         })
-        this.setState({ btnGetAll:true })
+        this.setState({ btnGetAll: true })
     }
 
     saveChanges(idstudent, verdict, status, isfactured, isbillpaid) {
@@ -370,9 +367,9 @@ class AcceuilIsiContainer extends Component {
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
-                        {this.state.btnGetAll?<button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>:<div></div>}
-                       <br/>
-                       <br/>
+                        {this.state.btnGetAll ? <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button> : <div></div>}
+                        <br />
+                        <br />
                         <form onSubmit={this.handleSubmit}>
 
                             <h2>Search</h2>
@@ -416,7 +413,7 @@ class AcceuilIsiContainer extends Component {
                             <br />
                         </form>
                         <br />
-                        
+
                     </div>
                     <div className="col-md-10 mb-10">
 

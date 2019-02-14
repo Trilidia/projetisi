@@ -104,7 +104,7 @@ class EtuformContainer extends Component {
     }
 
     resetComponent() {
-        console.log('rentre1') // eslint-disable-line
+
         this.setState({
             student: [{
                 streetname: "",
@@ -225,7 +225,7 @@ class EtuformContainer extends Component {
     }
 
     generatedIdNumber() {
-        console.log('generated')//eslint-disable-line
+
 
         let random = Math.floor((Math.random() * 1000000000) - 1)
         var statename = { ...this.state.student }

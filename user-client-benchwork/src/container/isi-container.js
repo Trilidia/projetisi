@@ -14,19 +14,19 @@ class IsiContainer extends Component {
         this.state = {
             phase: 0,
             idstudentcomment: 0,
-            idstudentEdit:0,
-            studentInfo:0,
-            username:''
+            idstudentEdit: 0,
+            studentInfo: 0,
+            username: ''
         }
         this.changePhase = this.changePhase.bind(this);
         this.setIdStudentComment = this.setIdStudentComment.bind(this);
         this.setStudentInfo = this.setStudentInfo.bind(this);
-        this.setStudentEdit=this.setStudentEdit.bind(this);
-        this.setBackToHome=this.setBackToHome.bind(this)
+        this.setStudentEdit = this.setStudentEdit.bind(this);
+        this.setBackToHome = this.setBackToHome.bind(this)
     }
 
     changePhase(nbPhase) {
-        
+
         this.setState({ phase: nbPhase })
         this.forceUpdate()
     }
@@ -39,21 +39,21 @@ class IsiContainer extends Component {
     }
     componentDidMount() {
         this.changePhase(0)
-        this.setState({username:this.props.username})
+        this.setState({ username: this.props.username })
     }
 
-    setStudentInfo(studentid){
-        console.log("bb"+studentid) //eslint-disable-line
-        this.setState({studentInfo: studentid})
+    setStudentInfo(studentid) {
+
+        this.setState({ studentInfo: studentid })
         this.setState({ phase: 5 })
     }
 
-    setBackToHome(){
+    setBackToHome() {
         this.setState({ phase: 0 })
     }
 
-    setStudentEdit(studentid){
-        this.setState({idstudentEdit: studentid})
+    setStudentEdit(studentid) {
+        this.setState({ idstudentEdit: studentid })
         this.setState({ phase: 6 })
     }
 
@@ -64,13 +64,13 @@ class IsiContainer extends Component {
             return (
                 <div>
                     <div>
-                        <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} username={this.state.username}/>
-                        <br/>
+                        <HeaderIsiContainer changePhase={this.changePhase} logout={this.props.logout} username={this.state.username} />
+                        <br />
 
-                        <br/>
+                        <br />
                     </div>
                     <div>
-                        <AcceuilIsiContainer changePhase={this.changePhase} setIdStudentComment={this.setIdStudentComment} setStudentInfo={this.setStudentInfo} setStudentEdit={this.setStudentEdit}/>
+                        <AcceuilIsiContainer changePhase={this.changePhase} setIdStudentComment={this.setIdStudentComment} setStudentInfo={this.setStudentInfo} setStudentEdit={this.setStudentEdit} />
                     </div>
                 </div>
             )

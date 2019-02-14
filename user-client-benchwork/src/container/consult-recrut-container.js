@@ -14,8 +14,8 @@ class ConsultRecrutContainer extends Component {
         this.getstudentbyid = this.getstudentbyid.bind(this);
     }
     componentDidMount() {
-    
-            this.getstudentbyid(this.props.idstudent)
+
+        this.getstudentbyid(this.props.idstudent)
     }
 
     getstudentbyid(id) {
@@ -32,7 +32,7 @@ class ConsultRecrutContainer extends Component {
 
 
     render() {
-        console.log(this.state.infoStudent) // eslint-disable-line
+
 
         return (
             <div className='container'>

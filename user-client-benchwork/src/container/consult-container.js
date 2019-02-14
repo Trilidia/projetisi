@@ -32,7 +32,7 @@ class ConsultContainer extends Component {
 
     render() {
 
-        console.log(this.state.infoStudent) // eslint-disable-line
+
         return (
 
             <div className='container'>

@@ -125,13 +125,13 @@ class EtuformIsiContainer extends Component {
 
 
         event.preventDefault();
-        console.log('Dans en handlesubmit') //eslint-disable-line
+
         if (this.state.updateInfoFor === PERSONAL) {
-            console.log(PERSONAL) //eslint-disable-line
+
             this.updateStudentPersonnal();
 
         } else if (this.state.updateInfoFor === ADMINISTRATION) {
-            console.log(ADMINISTRATION) //eslint-disable-line
+
             this.updateStudentAdministrative();
 
         }
