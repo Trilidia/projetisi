@@ -7,6 +7,9 @@ import jsPDF from 'jspdf';
 import { properties } from '../../properties';
 import { imgdata } from '../utils/img-data';
 
+const FILTERONE = "filterone"
+const FILTERTWO = "filtertwo"
+
 class AcceuilRecruteurContainer extends Component {
     constructor() {
         super()
@@ -19,7 +22,12 @@ class AcceuilRecruteurContainer extends Component {
             verdictSearched: 0,
             status: [],
             verdict: [],
-            btnGetAll:false,
+            btnGetAll: false,
+            sessions: [],
+            programs: [],
+            sessionToSerch: 0,
+            programToSearch: 0,
+            filter: "",
         }
         this.onChangeId = this.onChangeId.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -27,13 +35,32 @@ class AcceuilRecruteurContainer extends Component {
         this.onChangeStatut = this.onChangeStatut.bind(this);
         this.onChangeVerdict = this.onChangeVerdict.bind(this);
         this.getSelectAll = this.getSelectAll.bind(this);
+        this.getAllPrograms = this.getAllPrograms.bind(this);
+        this.getAllSession = this.getAllSession.bind(this);
+        this.setfilterone = this.setfilterone.bind(this);
+        this.setfilterTwo = this.setfilterTwo.bind(this);
+        this.onChangeProgram = this.onChangeProgram.bind(this);
+        this.onChangeSession = this.onChangeSession.bind(this);
 
+    }
+
+    getAllPrograms() {
+        APIService.get('programform').then(response => {
+            this.setState({ programs: response.data })
+        })
+    }
+    getAllSession() {
+        APIService.get('getsessionforselect').then(response => {
+            this.setState({ sessions: response.data })
+        })
     }
 
     componentDidMount() {
         this.getSelectAll()
         this.getAllStatus()
         this.getAllVerdict()
+        this.getAllPrograms()
+        this.getAllSession()
     }
 
     componentWillMount() {
@@ -83,17 +110,47 @@ class AcceuilRecruteurContainer extends Component {
         })
     }
 
+    onChangeProgram(event) {
+        this.setState({
+            programToSearch: event.target.value
+        })
+    }
+
+    onChangeSession(event) {
+        this.setState({
+            sessionToSerch: event.target.value
+        })
+    }
+
+    setfilterone() {
+        this.setState({ filter: FILTERONE })
+    }
+    setfilterTwo() {
+        this.setState({ filter: FILTERTWO })
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        APIService.post('getstudentbyallfilter', {
-            idnumber: this.state.idStudent,
-            lastname: this.state.nameStudent,
-            statut: this.state.statuSearched,
-            verdict: this.state.verdictSearched
-        }).then(response => {
-            this.setState({ students: response.data })
-        })
-        this.setState({ btnGetAll:true })
+        if (this.state.filter == FILTERONE) {
+            APIService.post('getstudentbyallfilter', {
+                idnumber: this.state.idStudent,
+                lastname: this.state.nameStudent,
+                statut: this.state.statuSearched,
+                verdict: this.state.verdictSearched
+            }).then(response => {
+                this.setState({ students: response.data })
+            })
+        }
+        else {
+            APIService.post('filtreprogramsession', {
+                programid: this.state.programToSearch,
+                sessionid: this.state.sessionToSerch,
+            }).then(response => {
+                this.setState({ students: response.data })
+
+            })
+        }
+        this.setState({ btnGetAll: true })
     }
 
     handleClick(student) {
@@ -335,7 +392,7 @@ class AcceuilRecruteurContainer extends Component {
     }
 
     render() {
-        // this.getSelectAll();
+
         return (
             <div className="container-fluid">
                 <br />
@@ -343,9 +400,9 @@ class AcceuilRecruteurContainer extends Component {
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
-                        {this.state.btnGetAll?<button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>:<div></div>}
-                       <br/>
-                       <br/>
+                        {this.state.btnGetAll ? <button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button> : <div></div>}
+                        <br />
+                        <br />
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
                             <InputComponentForm
@@ -357,8 +414,6 @@ class AcceuilRecruteurContainer extends Component {
                                 placeholder="Id"
 
                             />
-
-
                             <InputComponentForm
                                 id="name"
                                 type="text"
@@ -390,9 +445,31 @@ class AcceuilRecruteurContainer extends Component {
                             <br />
                             <button className="btn btn-secondary col-md-12 mb-12">Display</button>
                             <br />
+                            <br />
+
+                            <SelectComponent
+                                name="program"
+                                className="form-control"
+                                text="Program"
+                                id="program"
+                                type="text"
+                                options={this.state.programs}
+                                onChange={this.onChangeProgram}
+                            />
+                            <SelectComponent
+                                name="session"
+                                className="form-control"
+                                text="Session"
+                                id="session"
+                                type="text"
+                                options={this.state.sessions}
+                                onChange={this.onChangeSession}
+                            />
+                            <br />
+                            <button className="btn btn-secondary col-md-12 mb-12 mt-100" onClick={this.setfilterTwo}>Display</button>
+                            <br />
                         </form>
                         <br />
-                      
 
                     </div>
 

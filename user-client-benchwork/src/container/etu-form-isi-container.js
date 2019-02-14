@@ -431,7 +431,7 @@ class EtuformIsiContainer extends Component {
                         {this.returnInput("No :", "text", "streetno", this.state.student[0].streetno, "No", this.changeStreetNo, "[^\\s]+", "col-md-2", "form-control", "Required, no space", this.state.enableValidation, "required")}
                         {this.returnInput("Street name :", "text", "streetname", this.state.student[0].streetname, "Street name", this.changeStreetName, ".*", "col-md-3", "form-control", "Required", this.state.enableValidation, "required")}
                         {this.returnInput("Apt :", "text", "apt", this.state.student[0].apt, "Apt", this.changeApt, ".*", "col-md-2", "form-control", "Required", this.state.enableValidation)}
-                        {this.returnInput("Postal Code :", "text", "postalcode", this.state.student[0].postalcode, "Postal code", this.changePostalCode, "^(?!.*[DFIOQU])[a-zA-Z][0-9][a-zA-Z] ?[0-9][a-zA-Z][0-9]$", "col-md-3", "form-control", "Invalide format, A1A 1A1", this.state.enableValidation, "required")}
+                        {this.returnInput("Postal Code :", "text", "postalcode", this.state.student[0].postalcode, "Postal code", this.changePostalCode, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row">
                         {this.returnInput("City :", "text", "city", this.state.student[0].city, "city", this.changeCity, "\\D+", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
