@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputComponent from "component/input-component";
+import InputComponentForm from "component/inputform-component";
 import APIService from "../service/api-service";
 import HeaderContainer from "container/header";
 
@@ -42,16 +43,56 @@ class LoginContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="align-middle">
 
                 <HeaderContainer />
                 {(this.state.login==0)?<div className="alert alert-danger" role="alert">{this.state.userNameCreate} Username or Password Invalid </div>:<div></div>}
                 <div className="row justify-content-center">
                     <h1>Login</h1>
                 </div>
+                <br/>
+                <br/>
                 <form id="form-test" onSubmit={this.handleSubmit}>
                     <div className="form-group row justify-content-center">
-                        <InputComponent
+                        <InputComponentForm
+                            placeholder="Username"
+                            type="text"
+                            id="userName_id"
+                            value={this.state.username}
+                            onChange={this.onChangedUsername}
+                            classesinput="form-control"
+                            classesdiv="col-md-2"
+                        />
+                    </div>
+
+                    <div className="form-group row justify-content-center">
+                        <InputComponentForm
+                            placeholder="Password"
+                            type="password"
+                            id="password_id"
+                            value={this.state.password}
+                            onChange={this.onChangedPassword}
+                            classesinput="form-control"
+                            classesdiv="col-md-2"
+                        />
+                    </div>
+                    <br/>
+                  
+                    <div className="form-group row justify-content-center">
+                    
+                        <button type="submit" className="btn btn-dark btn-lg">Sign in</button>
+                    </div>
+                </form>
+            </div>
+
+        );
+    }
+}
+
+export default LoginContainer;
+
+/*
+<InputComponent
                             text="Username"
                             type="text"
                             id="userName_id"
@@ -68,16 +109,4 @@ class LoginContainer extends Component {
                             value={this.state.password}
                             onChange={this.onChangedPassword}
                             className="form-control"
-                        />
-                    </div>
-                    <div className="form-group row justify-content-center">
-                        <button type="submit" className="btn btn-dark">Sign in</button>
-                    </div>
-                </form>
-            </div>
-
-        );
-    }
-}
-
-export default LoginContainer;
+                        />*/

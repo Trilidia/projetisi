@@ -138,16 +138,18 @@ class CreateUserContainer extends Component {
             {this.state.displayAlertCreateSuccess?<div className="alert alert-success" role="alert">{this.state.userNameCreate} has been created</div>:<div></div>}
                 {this.state.enableAlert ? <div className="alert alert-danger" role="alert">password must match</div> : <div></div>}
                 <div className="container text-center">
+                <br/>
+                <br/>
                     <h2>Create user</h2>
 
                     <div className="form-group row justify-content-center">
                         {this.returnInput("Username :", "text", "username", this.state.user[0].username, "Username", this.changeUsername, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
-                        {this.returnInput("Password :", "password", "", this.state.user[0].password, "", this.changePassword, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Password :", "password", "", this.state.user[0].password, "password", this.changePassword, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
                     <div className="form-group row justify-content-center">
-                        {this.returnInput("Confirm password :", "password", "passwordconfirme", this.state.user[0].passwordConfirme, "", this.changePasswordConfirme, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
+                        {this.returnInput("Confirm password :", "password", "passwordconfirme", this.state.user[0].passwordConfirme, "confirm password", this.changePasswordConfirme, ".*", "col-md-3", "form-control", "Can't be empty", this.state.enableValidation, "required")}
                     </div>
 
 
