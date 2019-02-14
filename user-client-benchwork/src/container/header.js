@@ -10,7 +10,8 @@ class HeaderContainer extends Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark mr-auto bg-dark justify-content-center">
-                    <a className="navbar-brand" href="#" onClick={this.props.clickOnSubmit}>INSTITUT SUPERIEUR D&apos;INFORMATIQUE </a>
+                    <a id="titleisi" className="navbar-brand" href="#" onClick={this.props.clickOnSubmit}>Institut supérieur d&apos;informatique</a>
+                    
                 </nav>
 
                 <div className="container">

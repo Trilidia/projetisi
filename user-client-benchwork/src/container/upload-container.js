@@ -8,7 +8,7 @@ class UploadContainer extends Component {
     super()
     this.state = {
       selectedFile: '',
-      //fileName: '',
+      fileName: '',
       uploadStatus: '',
       displayErrors: false,
       fileslistacademic: [],
@@ -31,7 +31,7 @@ class UploadContainer extends Component {
   }
 
   componentDidMount() {
-
+    console.log('PD didmount') //eslint-disable-line
     this.getFilesListAcademic()
     this.getIdentityFilesList()
     this.forceUpdate()
@@ -43,6 +43,7 @@ class UploadContainer extends Component {
     })
   }
   getFilesListAcademic() {
+    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/academicfiles', {
         params: {
@@ -54,6 +55,7 @@ class UploadContainer extends Component {
       })
   }
   getIdentityFilesList() {
+    //console.log("TEST PROPS INFOSTUDENT" + this.props.infoStudent) // eslint-disable-line
     axios
       .get('/identityfiles', {
         params: {
@@ -75,6 +77,7 @@ class UploadContainer extends Component {
     }
   }
   deleteFile(fileName) {
+    // console.log('enter1 ' + fileName) //eslint-disable-line
     axios
       .post('deletes', {
         fileURL: fileName
@@ -88,42 +91,45 @@ class UploadContainer extends Component {
   }
 
   onSubmit() {
+
     let studentid = this.props.infoStudent
 
     const FormData = require('form-data')
     let form = new FormData()
 
-    const { selectedFile, selectedOption } = this.state
+    const { selectedFile, selectedOption, fileName } = this.state
 
-    if (this.state.selectedOption === "") {
+    if (this.state.fileName ==="" ||this.state.selectedOption ==="" ) {
       this.setState({ displayErrors: true })
       return;
     }
-    else if (this.state.selectedFile === "") {
-      this.setState({ uploadStatus: "No file selected" })
+    else if(this.state.selectedFile===""){
+      this.setState({uploadStatus : "No file selected"})
       return;
     }
-    else {
+    else{
       form.append('selectedOption', selectedOption)
       form.append('selectedFile', selectedFile)
+      form.append('fileName', fileName)
       form.append('studentid', studentid)
       axios.post('/', form)
-        .then(response => {
+      .then(response => {
+          console.log("retour de la requete upload serveur" + response.data) //eslint-disable-line
           this.setState({ uploadStatus: response.data })
           this.getFilesListAcademic()
           this.getIdentityFilesList()
         })
 
-
-      this.setState({ selectedFile: "" })
-      this.setState({ displayErrors: false })
+        this.setState({fileName: ""})
+        this.setState({selectedOption: ""})
+        this.setState({displayErrors: false})
     }
-
+    
 
 
   }
   render() {
-    // const { fileName } = this.state
+    const { fileName } = this.state
     const { displayErrors } = this.state;
     return (
       <div className="border border-danger">
@@ -138,6 +144,7 @@ class UploadContainer extends Component {
           fileslistacademic={this.state.fileslistacademic}
           identityfileslist={this.state.identityfileslist}
           deleteFile={this.deleteFile}
+          fileName={fileName}
           onChange={this.onChange}
           radioValue1={this.state.identityacademicfile[1].value}
           radioValue2={this.state.identityacademicfile[0].value}

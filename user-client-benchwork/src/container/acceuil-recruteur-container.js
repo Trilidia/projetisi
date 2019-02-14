@@ -19,6 +19,7 @@ class AcceuilRecruteurContainer extends Component {
             verdictSearched: 0,
             status: [],
             verdict: [],
+            btnGetAll:false,
         }
         this.onChangeId = this.onChangeId.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -44,6 +45,7 @@ class AcceuilRecruteurContainer extends Component {
         APIService.get('getstudent').then(response => {
             this.setState({ students: response.data })
         })
+        this.setState({ btnGetAll: false })
     }
 
     getAllStatus() {
@@ -91,6 +93,7 @@ class AcceuilRecruteurContainer extends Component {
         }).then(response => {
             this.setState({ students: response.data })
         })
+        this.setState({ btnGetAll:true })
     }
 
     handleClick(student) {
@@ -340,6 +343,9 @@ class AcceuilRecruteurContainer extends Component {
                 <div className="row">
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
+                        {this.state.btnGetAll?<button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>:<div></div>}
+                       <br/>
+                       <br/>
                         <form onSubmit={this.handleSubmit}>
                             <h2>Search</h2>
                             <InputComponentForm
@@ -386,7 +392,7 @@ class AcceuilRecruteurContainer extends Component {
                             <br />
                         </form>
                         <br />
-                        <button className="btn btn-secondary col-md-12 mb-12  mt-15" onClick={this.getSelectAll}>Display all</button>
+                      
 
                     </div>
 

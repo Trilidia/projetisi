@@ -10,7 +10,6 @@ const FileItemComponent = ({
   radioValue1,
   radioValue2,
   onRadioChange,
-  selectedOption,
   submitFile,
   displayErrors
   //idstudent  <input type='text' name='idstudent' value={idstudent} />

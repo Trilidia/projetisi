@@ -371,7 +371,8 @@ class AcceuilIsiContainer extends Component {
                     <div className="form-group col-md-2 mb-2">
                         <img src={require('../images/isi.png')} />
                         {this.state.btnGetAll?<button className="btn btn-secondary col-md-12 mb-12" onClick={this.getSelectAll}>Display all</button>:<div></div>}
-                       
+                       <br/>
+                       <br/>
                         <form onSubmit={this.handleSubmit}>
 
                             <h2>Search</h2>
