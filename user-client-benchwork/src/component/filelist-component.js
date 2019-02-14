@@ -57,7 +57,7 @@ const FileItemComponent = ({
                     href={`` + properties.axiosBaseURL + `/downloads?test=${row.filename}`}
                     download
                   >
-                    {row.filename}.{row.extensionfile}
+                    {row.filename}
                   </a>
                 </td>
                 <td>
@@ -81,7 +81,7 @@ const FileItemComponent = ({
                     href={`` + properties.axiosBaseURL + `/downloads?test=${row.filename}`}
                     download
                   >
-                    {row.filename}.{row.extensionfile}
+                    {row.filename}
                   </a>
                 </td>
                 <td>
